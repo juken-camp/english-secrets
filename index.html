@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英語のヒミツ — 知れば得点が上がる読み物</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Kiwi+Maru:wght@300;400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#faf6f8;--card:#fff;--accent:#8b5e83;--accent-light:#c9a0c1;--accent-bg:#f3e8f0;--text:#3a2d35;--text-light:#7a6b73;--highlight:#e8c85a;--highlight-bg:#fdf6e3;--tip-bg:#e8f4f0;--tip-accent:#4a9e82;--danger-bg:#fde8e8;--danger-accent:#c45a5a;--shadow:0 2px 16px rgba(139,94,131,.08);--shadow-hover:0 4px 24px rgba(139,94,131,.15);--radius:16px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);line-height:1.9;font-size:16px;-webkit-font-smoothing:antialiased}
+.top-page{min-height:100vh;padding:0 16px 40px}
+.top-header{text-align:center;padding:48px 0 12px}
+.top-header h1{font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:28px;color:var(--accent);margin-bottom:8px;letter-spacing:-.5px}
+.top-header .subtitle{font-family:'Kiwi Maru',serif;font-size:14px;color:var(--text-light);font-weight:300}
+.top-stats{display:flex;justify-content:center;gap:24px;margin:16px 0 8px;font-size:13px;color:var(--text-light)}
+.search-wrap{max-width:600px;margin:16px auto 0;position:relative}
+.search-input{width:100%;padding:12px 16px 12px 40px;border-radius:12px;border:1.5px solid #e0d5dc;background:#fff;font-size:14px;font-family:'Noto Sans JP',sans-serif;outline:none;transition:border-color .2s}
+.search-input:focus{border-color:var(--accent-light)}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:16px;color:var(--text-light)}
+.chapter-list{max-width:600px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.chapter-card{background:var(--card);border-radius:var(--radius);padding:16px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;box-shadow:var(--shadow);transition:all .25s ease;border:1.5px solid transparent;opacity:0;animation:fadeUp .4s ease forwards}
+.chapter-card:hover{box-shadow:var(--shadow-hover);border-color:var(--accent-light);transform:translateY(-2px)}
+.chapter-num{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-light));color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:14px;flex-shrink:0}
+.chapter-info{flex:1;min-width:0}
+.chapter-title{font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:14.5px;line-height:1.5}
+.chapter-desc{font-size:11.5px;color:var(--text-light);margin-top:1px;line-height:1.4}
+.chapter-tag{font-size:10px;padding:3px 8px;border-radius:20px;font-weight:500;flex-shrink:0;white-space:nowrap}
+.tag-history{background:#e8e0f0;color:#6b4e8a}.tag-grammar{background:#e0eef8;color:#4a7eaa}.tag-culture{background:#e8f4e0;color:#5a8a4e}.tag-exam{background:#f8e8e0;color:#aa6a4a}.tag-vocab{background:#f0e8e0;color:#8a6a4e}.tag-mind{background:#e0e8f0;color:#4e6a8a}
+.tag-filters{max-width:600px;margin:12px auto 0;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.tag-filter{padding:6px 14px;border-radius:20px;border:1.5px solid #e0d5dc;background:#fff;font-size:12px;font-family:'Zen Maru Gothic',sans-serif;font-weight:500;cursor:pointer;transition:all .2s;color:var(--text-light)}
+.tag-filter:hover{border-color:var(--accent-light);color:var(--accent)}
+.tag-filter.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.section-label{font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:13px;color:var(--accent);letter-spacing:1px;margin:28px 0 12px;padding-left:4px;max-width:600px;margin-left:auto;margin-right:auto}
+.reading-page{display:none;min-height:100vh;padding:0 0 80px}
+.reading-header{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-light) 100%);padding:20px 20px 28px;color:#fff;position:sticky;top:0;z-index:100}
+.back-btn{background:rgba(255,255,255,.2);border:none;color:#fff;padding:8px 16px;border-radius:20px;font-size:13px;font-family:'Zen Maru Gothic',sans-serif;font-weight:500;cursor:pointer;transition:background .2s}
+.back-btn:hover{background:rgba(255,255,255,.3)}
+.reading-title{font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:21px;margin-top:12px;line-height:1.4}
+.reading-meta{font-size:12px;opacity:.8;margin-top:6px;font-weight:300}
+.progress-bar{height:3px;background:rgba(255,255,255,.2);border-radius:2px;margin-top:12px;overflow:hidden}
+.progress-fill{height:100%;background:#fff;border-radius:2px;transition:width .4s ease}
+.reading-body{max-width:640px;margin:0 auto;padding:28px 20px}
+.reading-body h2{font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:20px;color:var(--accent);margin:36px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--accent-bg)}
+.reading-body h2:first-child{margin-top:0}
+.reading-body h3{font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:17px;color:var(--text);margin:28px 0 12px}
+.reading-body p{margin-bottom:16px;font-size:15.5px;line-height:2;text-align:justify}
+.reading-body strong{color:var(--accent);font-weight:700}
+.callout{background:var(--accent-bg);border-radius:12px;padding:16px 18px;margin:20px 0;border-left:4px solid var(--accent);font-size:14.5px;line-height:1.8}
+.callout-title{font-family:'Zen Maru Gothic',sans-serif;font-weight:700;color:var(--accent);margin-bottom:6px;font-size:14px}
+.tip-box{background:var(--tip-bg);border-radius:12px;padding:16px 18px;margin:20px 0;border-left:4px solid var(--tip-accent);font-size:14.5px;line-height:1.8}
+.tip-title{font-family:'Zen Maru Gothic',sans-serif;font-weight:700;color:var(--tip-accent);margin-bottom:6px;font-size:14px}
+.exam-box{background:var(--highlight-bg);border-radius:12px;padding:16px 18px;margin:20px 0;border-left:4px solid var(--highlight);font-size:14.5px;line-height:1.8}
+.exam-title{font-family:'Zen Maru Gothic',sans-serif;font-weight:700;color:#9a7a20;margin-bottom:6px;font-size:14px}
+.warn-box{background:var(--danger-bg);border-radius:12px;padding:16px 18px;margin:20px 0;border-left:4px solid var(--danger-accent);font-size:14.5px;line-height:1.8}
+.warn-title{font-family:'Zen Maru Gothic',sans-serif;font-weight:700;color:var(--danger-accent);margin-bottom:6px;font-size:14px}
+.example-block{background:#f8f5fa;border-radius:10px;padding:14px 16px;margin:16px 0;font-size:15px;line-height:2}
+.example-block .en{font-weight:500;color:var(--accent)}
+.example-block .ja{font-size:13px;color:var(--text-light)}
+.chapter-nav{display:flex;gap:12px;margin-top:40px;padding-top:20px;border-top:2px solid var(--accent-bg)}
+.nav-btn{flex:1;padding:14px;border-radius:12px;border:2px solid var(--accent-bg);background:var(--card);font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:12px;color:var(--accent);cursor:pointer;transition:all .2s;text-align:center;line-height:1.4}
+.nav-btn:hover{background:var(--accent-bg);border-color:var(--accent-light)}
+.nav-btn:disabled{opacity:.3;cursor:not-allowed}
+.scroll-top{position:fixed;bottom:24px;right:24px;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-light));color:#fff;border:none;font-size:20px;cursor:pointer;box-shadow:0 4px 16px rgba(139,94,131,.3);display:none;align-items:center;justify-content:center;z-index:200;transition:transform .2s}
+.scroll-top:hover{transform:scale(1.1)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:480px){.top-header h1{font-size:24px}.reading-title{font-size:18px}.reading-body p{font-size:15px}}
+</style>
+</head>
+<body>
+<div class="top-page" id="topPage">
+  <div class="top-header">
+    <h1>英語のヒミツ</h1>
+    <div class="subtitle">知ればテストの点が上がる、英語の「なぜ？」の物語</div>
+    <div class="top-stats"><span>📖 全<span id="totalCount">0</span>章</span></div>
+  </div>
+  <div class="search-wrap"><span class="search-icon">🔍</span><input type="text" class="search-input" id="searchInput" placeholder="キーワードで探す…" oninput="filterChapters()"></div>
+  <div class="tag-filters" id="tagFilters"></div>
+  <div class="section-label" id="label-history">🌍 英語の歴史と文化</div><div class="chapter-list" id="historyChapters"></div>
+  <div class="section-label" id="label-grammar">🔧 文法のヒミツ</div><div class="chapter-list" id="grammarChapters"></div>
+  <div class="section-label" id="label-vocab">📚 単語と語彙の世界</div><div class="chapter-list" id="vocabChapters"></div>
+  <div class="section-label" id="label-exam">📝 入試直結テクニック</div><div class="chapter-list" id="examChapters"></div>
+  <div class="section-label" id="label-mind">🧠 英語脳のつくり方</div><div class="chapter-list" id="mindChapters"></div>
+</div>
+<div class="reading-page" id="readingPage">
+  <div class="reading-header">
+    <button class="back-btn" onclick="goBack()">← もどる</button>
+    <div class="reading-title" id="readingTitle"></div>
+    <div class="reading-meta" id="readingMeta"></div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  </div>
+  <div class="reading-body" id="readingBody"></div>
+</div>
+<button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+const chapters = [
+{id:1,section:'history',title:'英語が世界を制覇した本当の理由',desc:'大英帝国→アメリカ→インターネットの300年史',tag:'history',tagLabel:'歴史',time:9,
+content:`
+<h2>なぜ「英語」なのか？</h2>
+<p>世界には7,000以上の言語があります。中国語を母語とする人は約14億人。スペイン語は約5億人。ヒンディー語も約6億人います。それなのに、なぜ「世界共通語」は英語なのでしょうか。英語を母語とする人は約4億人。数だけ見れば、中国語のほうがはるかに多いのです。</p>
+<p>答えは、言語の「質」ではなく「歴史」にあります。<strong>英語を話す国が、3回つづけて「世界のボス」になった</strong>。ただそれだけの理由です。でも、その「それだけ」の裏には、壮大なドラマがありました。</p>
+
+<h2>第1幕：大英帝国 ― 小さな島国が世界の4分の1を支配した</h2>
+<p>イギリスは、ヨーロッパの北西にある小さな島国です。面積は日本の本州とほぼ同じ。決して大きな国ではありません。</p>
+<p>ところが1700年代から1900年代にかけて、このちっぽけな島国がとんでもないことをやってのけました。世界中に植民地をつくり、最盛期には<strong>地球の陸地の4分の1を支配した</strong>のです。オーストラリア、インド、カナダ、南アフリカ、香港、シンガポール……世界地図をイギリスの領土で塗りつぶしたら、すべての時間帯にイギリス領が存在していました。どこかの領土は必ず昼間。だから「太陽が沈まない帝国」と呼ばれたのです。</p>
+<p>イギリスの強さの秘密は海軍でした。世界最強の海軍が海を支配し、貿易ルートを押さえた。商売がしたければイギリスと取引するしかない。取引するなら英語を話すしかない。こうして英語は<strong>「ビジネスの共通語」</strong>として最初の一歩を踏み出しました。</p>
+
+<div class="callout"><div class="callout-title">💡 今も残る植民地時代の名残</div>インド、オーストラリア、カナダ、ナイジェリア、シンガポール……これらの国々が英語を公用語にしているのは、かつてイギリスの植民地だったからです。現在、英語を公用語にしている国は<strong>50カ国以上</strong>。英語を第二言語として話す人は約15億人にのぼります。</div>
+
+<h2>第2幕：アメリカの世紀 ― 軍事力ではなく「文化」の力</h2>
+<p>1900年代に入ると、主役がイギリスからアメリカに交代します。2回の世界大戦に勝利し、世界最大の経済大国となったアメリカは、軍事力だけでなく、<strong>文化そのもの</strong>を世界に輸出しました。</p>
+<p>ハリウッド映画、ロックンロール、ジャズ、コカ・コーラ、ジーンズ、マクドナルド、ディズニー。考えてみてください。私たちが「かっこいい」「楽しい」と感じるものの多くは、アメリカから来ているのです。</p>
+<p>ここが大英帝国との決定的な違いでした。イギリスは「支配」によって英語を広めましたが、アメリカは<strong>「憧れ」によって英語を広めた</strong>のです。軍事力で押しつけられた言語は、支配が終われば衰退します。でも、文化の力で広がった言語は消えません。人々が自分から「学びたい」と思うからです。</p>
+
+<h2>第3幕：インターネット ― 最後のダメ押し</h2>
+<p>1990年代、インターネットという革命が起きました。そしてインターネットを作ったのも、育てたのも、アメリカでした。Google、Apple、Amazon、Meta、YouTube、Netflix。世界のテクノロジー企業の多くはアメリカに本社を置いています。</p>
+<p>現在、インターネット上のWebサイトの約60%は英語で書かれています。プログラミング言語も英語がベースです。if、for、return、while、function——プログラミングに触れたことがある人なら、これらの英単語を見たことがあるでしょう。</p>
+<p>SNSの登場は英語の支配をさらに強固にしました。日本のアニメファンがブラジルやフランスのファンと語り合うとき、使う言語は英語です。K-POPのファンが世界中で繋がるときも、共通語は英語。<strong>英語は「誰かに押しつけられる言語」から「自然と必要になる言語」へと変わった</strong>のです。</p>
+
+<div class="exam-box"><div class="exam-title">📝 これが入試にどう効くか</div>沖縄県入試の長文読解では、英語圏の文化や国際社会に関するテーマがよく出題されます。「なぜ英語が世界で使われているのか」という背景知識があると、文章の全体像をすばやく掴むことができ、読解スピードが格段に上がります。</div>
+
+<h2>英語は「たまたま」世界語になった</h2>
+<p>英語が世界共通語になったのは、英語という言語が「優れていた」からではありません。たまたま英語を話す国が世界を支配し、たまたまその国の文化が世界中で愛され、たまたまインターネットを発明した——歴史の偶然が重なった結果です。</p>
+<p>でも、だからこそ逆に言えることがあります。英語を学ぶということは、世界の歴史・文化・テクノロジーに直接アクセスする力を手に入れるということです。テストの点数を取るためだけではなく、<strong>世界中のコンテンツを楽しむためのパスポート</strong>を手に入れるのです。</p>
+`},
+
+{id:2,section:'history',title:'英単語の6割はフランス語から来た',desc:'1066年の事件が英語を永遠に変えた物語',tag:'vocab',tagLabel:'語彙',time:9,
+content:`
+<h2>「牛」と「牛肉」、なぜ名前が違うのか</h2>
+<p>英語で「牛」は <strong>cow</strong>、「牛肉」は <strong>beef</strong> です。cow と beef、まったく似ていません。日本語なら「牛」と「牛肉」で同じ漢字が使われているのに、英語ではなぜこんなことが起きるのでしょうか。</p>
+<p>豚も同じです。動物としての豚は <strong>pig</strong> ですが、豚肉は <strong>pork</strong>。羊は <strong>sheep</strong> なのに、羊肉は <strong>mutton</strong>。鶏は <strong>chicken</strong> で、鶏肉は <strong>poultry</strong>。動物の名前と肉の名前が、まるで別の言語のようです。</p>
+<p>じつは、「まるで別の言語」というのは比喩ではありません。<strong>本当に別の言語なのです</strong>。この謎を解くカギは、今から約1000年前の出来事にあります。</p>
+
+<h2>1066年——英語の運命を変えた年</h2>
+<p>1066年10月14日。フランスのノルマンディー地方を治めていたウィリアムという男が、軍隊を率いてイングランドに攻め込みました。ヘイスティングズの戦いでイングランド王ハロルド2世を倒し、自らイングランドの王に即位します。これが<strong>「ノルマン征服」</strong>と呼ばれる歴史的事件です。</p>
+<p>フランス人が王になったことで、何が起きたか。宮廷の言葉がフランス語になりました。法律もフランス語、政治もフランス語、裁判もフランス語。教養ある人の言葉はフランス語であり、英語は「教養のない庶民が使う粗野な言葉」として見下されるようになったのです。</p>
+<p>この状態が<strong>約300年</strong>つづきました。300年という時間は、言語を根本から変えてしまうのに十分な長さです。</p>
+
+<div class="callout"><div class="callout-title">🐄 cowとbeefの謎、ここで解けます</div>この300年間、社会はこうなっていました。農場で牛を育てているのは英語を話す庶民たち。だから動物の名前は英語のまま——cow、pig、sheep。一方、その肉を食べるのはフランス語を話す貴族たち。だから料理名はフランス語——beef、pork、mutton。<strong>「育てる人」と「食べる人」の言語が違ったから、同じ動物に2つの名前がついた</strong>のです。</div>
+
+<h2>英語が手に入れた「二重構造」</h2>
+<p>ノルマン征服の結果、英語は世界でも珍しい「二重構造」の言語になりました。もともとのゲルマン語系の単語と、フランス語（ラテン語）系の単語が共存するようになったのです。おもしろいのは、この2つの層に<strong>はっきりとした「格差」がある</strong>ことです。</p>
+<p>ゲルマン系の単語は短くてシンプルで、日常的な場面で使われます。ラテン系の単語は長くてフォーマルで、文章や公式な場面で使われます。たとえば「始める」を意味する begin はゲルマン系、commence はラテン系です。「助ける」の help はゲルマン系、assist はラテン系。どちらも意味は似ていますが、ラテン系のほうが「かしこまった」印象があります。</p>
+<p>これは入試に直結する知識です。<strong>入試の長文に出てくる難しそうな単語は、ほとんどがラテン系</strong>。そしてラテン系の単語には、あるすばらしい特徴があります。</p>
+
+<h2>「パーツ」を知れば、知らない単語の意味がわかる</h2>
+<p>ラテン系の単語は「接頭辞（頭のパーツ）＋語根（中心のパーツ）＋接尾辞（お尻のパーツ）」という組み立て式になっています。このパーツの意味を知っていれば、初めて見る単語でも意味が推測できるのです。</p>
+<p>たとえば <strong>uncomfortable</strong> という単語を見てみましょう。un（〜でない）＋ comfort（快適）＋ able（〜できる）。パーツに分解すれば「快適でない」という意味が浮かび上がります。<strong>international</strong> なら、inter（〜の間の）＋ nation（国）＋ al（〜の性質を持つ）で「国と国の間の」＝「国際的な」です。</p>
+<p>よく使う接頭辞を7つだけ覚えるとしたら、un-（〜でない）、re-（もう一度）、pre-（前に）、dis-（反対）、im-/in-（〜でない）、ex-（外へ）、inter-（間に）。たったこれだけで、何百もの単語の意味が推測可能になります。</p>
+<p>接尾辞も同じです。-tion/-sion が見えたら名詞、-ful が見えたら「〜に満ちた」、-less が見えたら「〜がない」、-able が見えたら「〜できる」、-ly が見えたら副詞。これを知っているだけで、長文読解の世界がまったく変わります。</p>
+
+<div class="exam-box"><div class="exam-title">📝 入試での威力</div>長文読解で知らない単語に出会ったとき、パニックになる必要はありません。接頭辞・接尾辞という「パーツ」を手がかりに、意味を推測してみてください。disappearance なら dis（離れる）＋ appear（現れる）＋ ance（名詞化）で「消失」。1000年前のフランス人が英語にくれたこの贈り物を、入試本番で存分に活かしましょう。</div>
+`},
+
+{id:3,section:'history',title:'翻訳できない日本語、翻訳できない英語',desc:'言葉の違いは文化の違い——それが読解力になる',tag:'culture',tagLabel:'文化',time:9,
+content:`
+<h2>「いただきます」は英語でなんと言いますか？</h2>
+<p>答えは、「言わない」です。</p>
+<p>英語には「いただきます」にぴったりあてはまる表現がありません。食事の前に "Let's eat"（さあ食べよう）と言うことはありますが、「命をいただく」「作ってくれた人への感謝」という深いニュアンスは含まれていません。日本語の「いただきます」は、食材となった命、料理を作った人、食卓に届くまでのすべての過程への感謝が込められた、世界的にも珍しい言葉なのです。</p>
+<p>逆のケースもあります。英語の <strong>"privacy"</strong> は日本語に完璧には訳せません。「プライバシー」とカタカナにするしかない。なぜかというと、日本の文化には「個人の空間を絶対的に守る」という概念が、英語圏ほど強くなかったからです。その概念を表す日本語がそもそも存在しなかった。だからカタカナで借りてきたのです。</p>
+
+<h2>言葉が存在するということは、文化がそれを「大切にしている」ということ</h2>
+<p>日本語には「木漏れ日」という美しい言葉があります。木の葉の間からこぼれ落ちる日光のこと。英語でこれを説明しようとすると、"sunlight filtering through the leaves of trees" と長い説明が必要になります。一語では言えないのです。</p>
+<p>なぜ日本語には一語で言えるのでしょうか。それは日本人が何百年もの間、自然の細やかな美しさに注意を払い、それを言葉にする文化を育ててきたからです。「わびさび」「もったいない」「お疲れ様」「甘える」——これらの言葉はすべて、日本文化が特別に大切にしてきた概念を映しています。</p>
+<p>英語にも同じことが言えます。<strong>serendipity</strong>（偶然の幸運を見つける才能）、<strong>bittersweet</strong>（甘くてほろ苦い、嬉しいけれど切ない感情）、<strong>deadline</strong>（もともとは「この線を越えたら死ぬ」という意味から転じた「期限」）。これらは英語圏の人々が大切にしてきた概念に、名前をつけたものです。</p>
+
+<h2>「行間を読む」とは何か——日本語と英語の感情表現の違い</h2>
+<p>入試の長文読解で最も難しいのは、書かれていないことを読み取る問題です。「登場人物はどう感じていましたか？」と問われたとき、答えが直接書かれていないことがあります。文脈から推測しなければなりません。</p>
+<p>ここで重要になるのが、日本語と英語の<strong>「感情の伝え方の違い」</strong>です。日本語は「察する」文化。感情を言葉にしなくても、相手が空気を読んで理解してくれることを期待します。「ちょっと……」と言葉を濁すだけで、相手が「あ、嫌なんだな」と察してくれる世界です。</p>
+<p>一方、英語は「言葉にする」文化です。感情はちゃんと口に出さないと伝わらない、という前提で言語が成り立っています。だから英語の文章では "I was disappointed"（がっかりしました）、"She felt relieved"（彼女はほっとしました）と<strong>感情を直接表す言葉が書いてある</strong>ことが非常に多いのです。</p>
+
+<div class="callout"><div class="callout-title">💡 これが読解の武器になる</div>英語の長文で登場人物の気持ちを問われたら、まず探すべきは<strong>感情ワード</strong>です。happy、excited、surprised、proud、relieved（プラスの感情）。sad、worried、disappointed、confused、nervous（マイナスの感情）。英語は感情を直接書く言語なので、ヒントは必ず本文中にあります。「察する」必要はないのです。</div>
+
+<p>さらに注目したいのは<strong>「感情の変化パターン」</strong>です。英語の物語では、"At first"（最初は）→ "but"（でも）→ "finally"（最終的に）という流れで感情が変わることがよくあります。最初は不安だったけど、何かが起きて、最終的には成長した——このパターンを知っておくと、長文の展開が予測できるようになります。</p>
+
+<div class="exam-box"><div class="exam-title">📝 入試テクニック</div>「How did ○○ feel?」という設問を見たら、該当箇所の前後で感情ワードを探してください。英語は日本語よりずっと「感情を直接書く」言語です。答えは必ず文中にあります。また、"at first ... but ... finally" の流れも意識すると、感情の変化を問う問題で正確に答えられるようになります。</div>
+`},
+
+{id:4,section:'history',title:'世界の映画の85%は英語で作られている',desc:'リスニングは「勉強」ではなく「冒険のパスポート」',tag:'culture',tagLabel:'文化',time:9,
+content:`
+<h2>毎日触れているもの、その原語は英語です</h2>
+<p>マーベル映画、ハリー・ポッター、Minecraft、Fortnite、YouTube、TikTok、Netflix。毎日のように触れているこれらのコンテンツの多くは、もともと英語で作られています。</p>
+<p>世界で制作される映画の約85%は英語です。音楽も同様で、SpotifyのグローバルTOP50はほぼすべて英語の曲で占められています。ゲームの世界も英語が圧倒的。Minecraftの公式アップデート情報は英語で発信され、フォートナイトの新シーズンの情報も最初に英語で出ます。</p>
+<p>つまり、日本語の翻訳や字幕を待っている間に、英語がわかる人はもう楽しんでいる。<strong>英語は世界のエンタメを「最速で」楽しむためのパスポート</strong>なのです。</p>
+
+<h2>「勉強としてのリスニング」をやめてみる</h2>
+<p>「リスニング対策で英語のCDを聞きなさい」と言われると、正直つまらないですよね。教科書の対話文を繰り返し聞いても、なかなか耳に入ってこない。それは当然です。<strong>興味のない内容は、脳が「不要な情報」として処理してしまう</strong>からです。</p>
+<p>では、好きな映画のセリフならどうでしょうか。好きなゲームの実況動画なら？ 好きなYouTuberが英語で話しているのなら？ 脳は「好きなもの」に関する情報を最優先で処理します。これは科学的に証明されていることです。</p>
+
+<div class="callout"><div class="callout-title">🎧 楽しみながら英語耳をつくる3ステップ</div><strong>ステップ1：</strong>好きな映画やドラマを、英語音声＋日本語字幕で見ます。まずは内容を楽しんでください。<br><br><strong>ステップ2：</strong>同じ作品を、今度は英語音声＋英語字幕で見ます。「ああ、あのシーンではこう言っていたのか！」という発見があるはずです。<br><br><strong>ステップ3：</strong>慣れてきたら字幕をオフにして見ます。すべてを聞き取れなくても大丈夫。聞き取れる単語がひとつ増えるたびに、世界が少し広がります。</div>
+
+<p>この方法は、赤ちゃんが言葉を覚えるプロセスと本質的に同じです。赤ちゃんは文法書を読みません。お母さんの声を何百回も聞いて、状況と音を結びつけていく。「意味がわかる場面で、繰り返し聞く」——これが言語習得の王道なのです。</p>
+
+<div class="tip-box"><div class="tip-title">🎮 ゲーマーへのアドバイス</div>Minecraftやフォートナイトの言語設定を英語に変えてみてください。inventory（持ち物）、defeat（倒す）、heal（回復する）、survive（生き残る）、discover（発見する）。ゲームの中で毎日目にするこれらの単語は、すべて入試にも出題される単語です。ゲームを楽しんでいるだけで、単語力が上がっていく。これほど効率のいい勉強法はありません。</div>
+
+<div class="exam-box"><div class="exam-title">📝 リスニングの即効テクニック</div>沖縄県入試のリスニングには、じつは「必勝法」があります。<strong>最初の2〜3語に全神経を集中させる</strong>のです。英語は「大事なことを先に言う」言語です。最初の疑問詞さえ聞き取れれば、何を答えればいいかがわかります。全文を完璧に聞き取る必要はありません。</p>
+
+<div class="example-block">
+<strong>疑問詞 → 聞き取るべき情報</strong><br><br>
+<span class="en">When ~?</span> →「いつ？」→ 時間・日付を聞き取る<br>
+<span class="en">Where ~?</span> →「どこ？」→ 場所を聞き取る<br>
+<span class="en">What ~?</span> →「何？」→ 物・行動を聞き取る<br>
+<span class="en">Who ~?</span> →「だれ？」→ 人物を聞き取る<br>
+<span class="en">Why ~?</span> →「なぜ？」→ 理由（Because...）を待つ<br>
+<span class="en">Which ~?</span> →「どちら？」→ 選択肢を聞き取る<br>
+<span class="en">How ~?</span> →「どうやって？」→ 方法・様子を聞き取る<br>
+<span class="en">How many ~?</span> →「いくつ？」→ 数を聞き取る<br>
+<span class="en">How much ~?</span> →「いくら？」→ 金額・量を聞き取る<br>
+<span class="en">How long ~?</span> →「どのくらい？」→ 期間を聞き取る<br>
+<span class="en">How often ~?</span> →「どのくらいの頻度？」→ 回数を聞き取る
+</div>
+
+<p>疑問詞を聞き取るだけで、正答率は大幅に上がります。</div>
+`},
+
+{id:5,section:'history',title:'Google翻訳がまだ人間に勝てない理由',desc:'文脈を読む力——それこそが入試で問われている力',tag:'culture',tagLabel:'文化',time:9,
+content:`
+<h2>「翻訳アプリがあるなら、英語の勉強いらなくない？」</h2>
+<p>スマホのカメラをかざせば翻訳してくれる時代に、なぜ英語を勉強するのか。こう考えたことがある人は少なくないでしょう。気持ちはよくわかります。でも、ここでひとつ、面白い実験をしてみましょう。</p>
+
+<div class="example-block"><span class="en">"Time flies like an arrow."</span><br><span class="ja">→ 「光陰矢のごとし」（時間は矢のように飛んでいく）✅ 正しい翻訳</span><br><br><span class="en">"Fruit flies like a banana."</span><br><span class="ja">→ 「果物はバナナのように飛ぶ」❌ …何かがおかしい</span><br><span class="ja">→ 正しい訳は「ショウジョウバエはバナナが好きだ」</span></div>
+
+<p>最初の文では flies は「飛ぶ」、like は「〜のように」という意味です。ところが2番目の文では、flies は「ハエ」、like は「好き」という意味です。同じスペルなのに、意味がまったく違います。</p>
+<p>人間の脳はこの違いを一瞬で判断できます。「果物が飛ぶのは変だから、これはハエの話だな」と、文脈から自動的に正しい意味を選べるのです。ところがAIは、この「常識的に考えておかしい」という判断が苦手です。</p>
+
+<h2>もうひとつ、AIが苦手なこと</h2>
+<div class="example-block"><span class="en">"The trophy doesn't fit in the brown suitcase because <strong>it</strong> is too big."</span><br><span class="ja">→ この "it" はトロフィー？ スーツケース？</span><br><span class="ja">→ 「大きすぎる」のだからトロフィーのこと。</span><br><br><span class="en">"The trophy doesn't fit in the brown suitcase because <strong>it</strong> is too small."</span><br><span class="ja">→ 「小さすぎる」のだからスーツケースのこと。</span></div>
+
+<p>同じ "it" なのに、後ろの形容詞が "big" か "small" かで指すものが変わる。これを理解するには、<strong>「スーツケースに入らない状況」を頭の中でシミュレーションする力</strong>が必要です。これはまさに「文脈を読む力」——そして、入試の指示語問題で問われているのも、まったく同じ力なのです。</p>
+
+<h2>文脈から意味を推測する——人間の脳だけが持つスーパーパワー</h2>
+<p>知らない単語に出会ったとき、すぐに辞書を引くのもひとつの方法です。でも入試の本番では辞書は使えません。必要なのは、<strong>文脈から意味を推測する力</strong>です。</p>
+<p><strong>方法1「前後の文を見る」：</strong>"She was so <strong>exhausted</strong> that she fell asleep immediately." exhausted の意味がわからなくても、「すぐに眠りに落ちた」という結果から、「疲れ果てた」という意味が推測できます。</p>
+<p><strong>方法2「対比を探す」：</strong>"Unlike his <strong>generous</strong> brother, Tom was selfish." Unlike（〜と違って）と selfish（わがまま）がヒントです。わがままの「反対」だから、generous は「寛大な、気前のいい」という意味だと推測できます。</p>
+<p><strong>方法3「具体例から推測する」：</strong>"Many <strong>beverages</strong>, such as juice, tea, and coffee, are sold here." such as の後にジュース、お茶、コーヒーが並んでいます。これらの共通点は「飲み物」。つまり beverages は「飲み物」です。</p>
+
+<div class="exam-box"><div class="exam-title">📝 入試直結テクニック</div>「下線部の語の意味に最も近いものを選べ」という問題が出たら、その下線部の<strong>前後2文を冷静に読んでください</strong>。ヒントは必ずそこにあります。入試が本当に測りたいのは単語の暗記量ではなく、この「推測する力」なのです。Google翻訳にはまだ完璧にはできないこの力こそ、人間の脳のスーパーパワーです。</div>
+`},
+
+{id:6,section:'history',title:'英語はかつて「バカにされる言葉」だった',desc:'庶民の言葉から世界語へ——英語の大逆転劇',tag:'history',tagLabel:'歴史',time:9,
+content:`
+<h2>世界共通語の「黒歴史」</h2>
+<p>今でこそ世界の共通語ですが、英語にはじつは「バカにされていた時代」があります。</p>
+<p>第2章で紹介したノルマン征服（1066年）の後、イギリスの支配層はすべてフランス語を話すようになりました。法律の文書はフランス語、裁判もフランス語、大学の講義はラテン語。英語は「教養のない庶民が使う粗末な言葉」として蔑まれたのです。</p>
+<p>現代の日本語に置き換えて想像してみてください。ある日突然、政治も法律も学校の授業もすべて英語になり、日本語は「家で友達としゃべるだけの言葉」になった。公式な場で日本語を使うと笑われる——そんな状況が300年つづいたのです。</p>
+
+<h2>ペストと百年戦争が英語を救った</h2>
+<p>転機は14世紀に訪れました。まず、ヨーロッパ全土をペスト（黒死病）が襲いました。人口の約3分の1が死亡するという大惨事です。フランス語を話す貴族層も大きな被害を受け、英語を話す庶民の社会的地位が相対的に上がりました。</p>
+<p>さらに、イングランドとフランスの間で百年戦争が始まりました。「フランスは敵だ」という意識が国中に広まり、人々は<strong>「自分たちの言葉」である英語に誇りを持ち始めた</strong>のです。</p>
+<p>1362年、ついに裁判の言語が英語に変わりました。1476年には印刷技術がイングランドに伝わり、英語で書かれた本が大量に出版されるようになりました。庶民の言葉だった英語が、正式な「国の言葉」として認められた瞬間です。</p>
+
+<div class="callout"><div class="callout-title">💡 日本語にも似た歴史があります</div>じつは日本語も同じような逆転劇を経験しています。かつて日本の公式文書はすべて漢文（中国語）で書かれていました。ひらがなは「女手（おんなで）」と呼ばれ、「女性や教養のない人が使う格下の文字」とされていたのです。ところが、ひらがなで書かれた紫式部の『源氏物語』が世界的な名作として評価され、やがて日本語は独自の言語としての地位を確立しました。バカにされていた言葉が、のちに世界に誇る言語になる。英語と日本語は、じつは似た運命を歩んできたのです。</div>
+
+<h2>英語のスペルがめちゃくちゃな理由</h2>
+<p>"through"、"enough"、"though" ——同じ "-ough" なのに、発音がすべて違います。これは英語学習者を悩ませる大きな問題ですが、なぜこんなことが起きるのでしょうか。</p>
+<p>答えは、<strong>英語のスペルが「何百年も前の発音で凍結されている」</strong>からです。15世紀に印刷技術が普及したとき、スペルはおおむね固定されました。しかしその後も発音はどんどん変化していきました。つまり、スペルと発音のあいだに数百年分のズレが生じているのです。</p>
+<p>じつは、ネイティブスピーカーですらスペルミスは日常茶飯事です。英語のスペルには完璧な法則がない。だから覚えられなくて当然なのです。それはあなたの能力のせいではなく、<strong>英語の歴史のせい</strong>です。</p>
+
+<div class="exam-box"><div class="exam-title">📝 スペル対策の現実的な戦略</div>入試で実際に「書く」必要がある単語は100語程度です。すべての英単語のスペルを完璧にする必要はありません。書く練習は頻出語に絞り、長文読解に出てくる単語は「読める＝意味がわかる」レベルで十分です。</div>
+`},
+
+{id:7,section:'history',title:'なぜアメリカ英語とイギリス英語は違うのか',desc:'color と colour——独立の精神がスペルまで変えた',tag:'history',tagLabel:'歴史',time:8,
+content:`
+<h2>どちらが「正しい」英語なのか</h2>
+<p>英語を勉強していると、同じ単語なのにスペルが違うことがあります。center と centre、color と colour、realize と realise。どちらが正しいのでしょうか。</p>
+<p>答えは<strong>「どちらも正しい」</strong>です。前者がアメリカ英語、後者がイギリス英語。2つの国で、英語が別々の進化を遂げた結果です。</p>
+
+<h2>ノア・ウェブスター——英語を「独立」させた男</h2>
+<p>1776年にアメリカがイギリスから独立したことは、みなさんもご存知でしょう。政治的には独立したアメリカですが、言語的にはまだイギリス英語をそのまま使っていました。</p>
+<p>そこに登場したのが、辞書編集者の<strong>ノア・ウェブスター</strong>です。彼は「アメリカはイギリスから独立した国家なのだから、言語も独立させるべきだ」と考えました。そして、アメリカ独自の辞書を編纂し、スペルを意図的に簡略化したのです。colour から u を取って color に。centre を center に。realise の s を z に変えて realize に。</p>
+<p>ウェブスターの狙いは「合理化」でした。不要な文字を省き、発音に近いスペルにする。実際、アメリカ英語のスペルのほうがシンプルで覚えやすいケースが多いのは、この「合理化」のおかげです。</p>
+
+<h2>発音も大きく違います</h2>
+<p>同じ "water" でも、イギリスでは「ウォータ」、アメリカでは「ワーラー」と聞こえます。"can't" はイギリスでは「カーント」、アメリカでは「キャーント」。おもしろいのは、アメリカ英語のほうが実は古い発音を残しているケースもあることです。イギリス英語もアメリカ英語も、17世紀のイギリス英語から枝分かれしたのですが、それぞれが異なる方向に変化していったのです。</p>
+
+<div class="callout"><div class="callout-title">🌏 「完璧な英語」は存在しません</div>世界にはアメリカ英語、イギリス英語だけでなく、オーストラリア英語、インド英語、シンガポール英語、ナイジェリア英語……数多くの「英語の方言」があります。沖縄の言葉と東京の標準語がまったく違うように、英語にもさまざまな「なまり」があるのです。大切なのは「完璧な発音」ではなく、「伝わること」です。</div>
+
+<h2>じつはアメリカ英語のほうが「古い」ことがある</h2>
+<p>おもしろいことに、アメリカ英語のほうが17世紀当時のイギリス英語に近い発音を保っている場合があります。たとえば "r" の発音。"car" や "far" の r を、アメリカ人ははっきり発音しますが、イギリス人（特にロンドン）はほとんど発音しません。じつは17世紀のイギリス英語では r をはっきり発音していたのです。</p>
+<p>つまりアメリカ英語が「変わった」のではなく、<strong>イギリス英語のほうが変わった</strong>のです。アメリカに渡った人々が古い発音を保存し、残ったイギリス人が新しい発音に変化していった。言語の進化は不思議なものです。</p>
+
+<div class="exam-box"><div class="exam-title">📝 入試での注意点</div>沖縄県入試では、アメリカ英語・イギリス英語のどちらのスペルで書いても正解になります。教科書がアメリカ英語を基本としているので、迷ったらアメリカ式（color, center, realize）で書くのが安全です。</div>
+`},
+
+{id:8,section:'history',title:'英語に取り込まれた日本語たち',desc:'tsunami, emoji, kawaii が世界語になった理由',tag:'culture',tagLabel:'文化',time:8,
+content:`
+<h2>英語の辞書に載っている日本語</h2>
+<p>英語は、世界中の言語から単語を借りてくる「借用の天才」です。フランス語から menu と restaurant を借り、アラビア語から algebra（代数学）を借り、日本語からも多くの言葉を取り込んでいます。</p>
+<p><strong>tsunami</strong>（津波）は、2004年のスマトラ沖地震をきっかけに世界に広まりました。英語の "tidal wave" とは科学的に異なる現象だったため、正確さを求めて日本語がそのまま採用されたのです。<strong>emoji</strong>（絵文字）は、日本の携帯電話文化から世界に広がりました。英語の "emoticon" とは異なり、表情だけでなく食べ物や動物など多彩なイラストを含む点が新しかった。既存の英単語では表現しきれなかったからこそ、日本語がそのまま使われたのです。</p>
+<p><strong>karaoke</strong>（カラオケ）、<strong>ramen</strong>（ラーメン）、<strong>tofu</strong>（豆腐）、<strong>sake</strong>（日本酒）——これらは日本の文化が世界に広がるにつれて、英語に取り込まれました。さらに <strong>kawaii</strong>（かわいい）、<strong>otaku</strong>（オタク）、<strong>sensei</strong>（先生）、<strong>karoshi</strong>（過労死）といった言葉も英語の辞書に載っています。</p>
+
+<h2>なぜ翻訳せずに、日本語のまま使われるのか</h2>
+<p>英語に取り込まれた日本語には共通点があります。<strong>英語に同じ概念を表す言葉がなかった</strong>という点です。tsunami は tidal wave とは違う。emoji は emoticon とは違う。kawaii は cute とは微妙にニュアンスが違う。翻訳しきれないから、そのまま取り込んだのです。</p>
+<p>考えてみれば、日本語も英語から大量の言葉を借りています。コンピュータ、インターネット、テレビ、アイスクリーム、サッカー。日本語に「パソコン画面上で情報を処理する電子機器」を一語で表す和語がなかったから、computer をカタカナにして使っているのです。</p>
+<p>言語は生き物です。時代とともに変化し、他の言語と混ざり合い、新しい言葉が生まれ、古い言葉が消えていく。<strong>「純粋な言語」など、この世に存在しないのです</strong>。</p>
+
+<h2>ことばの「輸出入」は双方向</h2>
+<p>言葉の借用は一方通行ではありません。日本語が英語に入るのと同じように、英語から日本語にも大量の言葉が流入しています。コンピュータ、インターネット、テレビ、アイスクリーム、サッカー。日本語に「画面上で情報を処理する電子機器」を一語で表す和語がなかったから、computer をカタカナにして使っているのです。</p>
+<p>ある研究によれば、現代日本語の語彙の約10%はカタカナ語（外来語）だと言われています。新聞を開けばカタカナ語だらけ。若者の会話にはさらに多くの英語由来の表現が入り込んでいます。<strong>言語は生き物です。時代とともに変化し、他の言語と混ざり合い、新しい言葉が生まれ、古い言葉が消えていく。「純粋な言語」など、この世に存在しない</strong>のです。</p>
+
+<div class="exam-box"><div class="exam-title">📝 入試との関連</div>「日本文化の紹介」や「異文化理解」をテーマにした長文は、入試で頻出です。日本語がどのように英語に取り込まれているかを知っていると、こうしたテーマの文章をスムーズに読むことができます。また、英作文で「日本の文化を紹介しなさい」という問題が出たとき、sushi、ramen、karaoke などは英語としてそのまま使えるという知識があると、書きやすくなります。</div>
+`},
+{id:9,section:'grammar',title:'英語と日本語は語順が真逆である',desc:'SVOとSOVの違いが腑に落ちれば、英作文が一瞬で組み立てられます',tag:'grammar',tagLabel:'文法',time:9,
+content:`
+<h2>「日本語の単語を英語に置き換える」は間違いです</h2>
+<p>英語が苦手な人に共通する勘違いがあります。「日本語の文を、単語だけ英語に置き換えればいい」と思っていることです。これは根本的に間違っています。なぜなら、<strong>英語と日本語は言葉の並べ方が完全に逆</strong>だからです。</p>
+<p>日本語で「私はりんごを食べる」と言うとき、「食べる」という動詞は一番最後に来ます。最後まで聞かないと、「食べた」のか「食べない」のか「食べたい」のかわからない。ところが英語では "I eat an apple." と、動詞の eat が2番目に来ます。"I eat ——" と言った時点で、もう「食べる」ことは確定しているのです。</p>
+
+<h2>英語は「結論ファースト」の言語です</h2>
+<p>この語順の違いは、じつは「考え方の違い」でもあります。日本語では「昨日なんだけどね、友達と一緒に、駅前のあの新しいお店で、ラーメンを食べたんだよね」と、背景情報を積み重ねてから結論を言います。英語では "I ate ramen."（ラーメン食べた）とまず結論。そのあと "Where?" と聞かれたら "At the new shop near the station." と補足する。<strong>まず結論、あとから補足</strong>。この感覚を掴むことが、英作文の第一歩です。</p>
+
+<h2>英作文の「箱詰め法」</h2>
+<p>英作文で手が止まるのは、日本語の語順のまま英語に変換しようとするからです。代わりに、「箱を順番に並べる」という感覚で組み立ててみてください。</p>
+
+<div class="callout"><div class="callout-title">📦 箱の並べ方</div>箱1【だれが】→ 箱2【どうする】→ 箱3【何を】→ 箱4【どこで】→ 箱5【いつ】<br><br>例：「私の姉は毎朝公園でジョギングをします」<br>→ 箱1 My sister → 箱2 jogs → 箱3（なし）→ 箱4 in the park → 箱5 every morning<br>→ <strong>My sister jogs in the park every morning.</strong><br><br>例：「彼は去年の夏に沖縄で泳ぎを楽しみました」<br>→ 箱1 He → 箱2 enjoyed → 箱3 swimming → 箱4 in Okinawa → 箱5 last summer<br>→ <strong>He enjoyed swimming in Okinawa last summer.</strong></div>
+
+<p>難しい表現を使う必要はまったくありません。箱を正しい順番で並べるだけで、文法的に正しい英文が完成します。</p>
+
+<h2>なぜ語順がこんなに大切なのか</h2>
+<p>英語は<strong>語順が意味を決める言語</strong>です。日本語では「犬が猫を追いかけた」でも「猫を犬が追いかけた」でも、「を」と「が」の助詞のおかげで意味は変わりません。しかし英語には助詞がありません。"A dog chased a cat." と "A cat chased a dog." では、追いかけるのが犬か猫か、意味が完全に逆転します。語順だけが、誰が何をしたかを決めているのです。</p>
+<p>だからこそ、英作文では語順が最重要。難しい単語を使う必要はまったくありません。箱を正しい順番で並べるだけで、文法的に正しい英文が完成するのです。</p>
+
+<div class="exam-box"><div class="exam-title">📝 入試の英作文で覚えておくべきこと</div>沖縄県入試の英作文では、高度な表現力は求められていません。<strong>語順が正しいだけで大きな部分点がもらえます</strong>。迷ったら「だれが→どうする→何を→どこで→いつ」の順番で箱を並べてください。これだけで8割正解できます。</div>
+`},
+
+{id:10,section:'grammar',title:'なぜ英語にはaとtheがあるのか',desc:'冠詞の感覚がつかめると、長文の指示語問題がスラスラ解けます',tag:'grammar',tagLabel:'文法',time:9,
+content:`
+<h2>日本語にはない「冠詞」という概念</h2>
+<p>英語学習で最もやっかいな存在、それが <strong>a</strong> と <strong>the</strong> です。なぜ "I saw a dog" と "I saw the dog" は違うのか。日本語ではどちらも「犬を見た」です。何が違うのでしょうか。</p>
+
+<h2>aは「初登場」、theは「あ、アレのことね」</h2>
+<p>物語で考えてみましょう。"Once upon a time, there was <strong>a</strong> king."（むかしむかし、ある王様がいました）。この王様は今初めて登場しました。聞き手はまだこの王様のことを知りません。だから <strong>a</strong> がつきます。</p>
+<p>次の文。"<strong>The</strong> king lived in a beautiful castle."（その王様は美しい城に住んでいました）。もう聞き手は「さっき出てきた王様のことだな」とわかっています。だから <strong>the</strong> に変わるのです。</p>
+<p>テレビドラマで新しいキャラクターが登場するとき、画面にテロップで名前が出ますよね。あれが <strong>a</strong> です。2回目以降はテロップが出なくても、視聴者は「あの人だ」とわかる。それが <strong>the</strong> です。</p>
+
+<h2>theは「前を指す矢印」——長文読解の武器になる</h2>
+<p>ここからが入試に直結する話です。長文を読んでいて <strong>the problem</strong> という表現が出てきたとしましょう。the がついているということは、「この問題についてはもう前に説明してあるはずだ」という合図です。つまり <strong>the は「前を指す矢印」</strong>なのです。</p>
+<p>the idea と出てきたら、前のどこかにそのアイデアの内容が書かれています。the result と出てきたら、前のどこかに結果につながる出来事が書かれています。<strong>the が出てきたら前に戻る</strong>。これだけで、長文の情報のつながりが格段に見えやすくなります。</p>
+
+<div class="callout"><div class="callout-title">💡 冠詞の「ない」日本語話者だからこそ</div>日本語には冠詞がありません。「犬を見た」で十分通じます。なぜ英語にはわざわざ a や the があるのでしょうか。それは、英語が「この情報は相手が知っているか、まだ知らないか」を<strong>常に明示する言語</strong>だからです。日本語は「察してくれ」の言語。英語は「全部言葉にする」の言語。この違いを理解するだけで、英語の見え方が変わります。</div>
+
+<h2>冠詞がない日本語話者だからこそ、意識的に学ぶ価値がある</h2>
+<p>日本語には冠詞がありません。「犬を見た」で十分通じます。なぜ英語にはわざわざ a や the があるのでしょうか。それは英語が「この情報は相手にとって新しいか、すでに知っているか」を<strong>常に明示する言語</strong>だからです。日本語は「察してくれ」の言語。英語は「全部言葉にする」の言語。この文化的な違いが、文法のしくみにまで反映されているのです。</p>
+<p>冠詞は入試の穴埋め問題で直接問われることは少ないですが、長文読解で<strong>情報の流れを追うとき</strong>に絶大な威力を発揮します。the が出てきたら「前に出てきた情報だ」、a が出てきたら「新しい情報が登場した」というシグナル。この感覚を持てると、長文がぐっと読みやすくなります。</p>
+
+<div class="exam-box"><div class="exam-title">📝 指示語問題の攻略法</div>入試で「下線部 the ○○ が指すものを答えなさい」という問題が出たら、やるべきことはひとつです。<strong>下線部より「前」を読んでください</strong>。the は前に出た情報を指す矢印です。答えは100%、下線部より前にあります。後ろを探しても絶対に見つかりません。</div>
+`},
+
+{id:11,section:'grammar',title:'英語の時制は「時間の地図」である',desc:'過去・現在・未来の感覚は日本語と根本的に違います',tag:'grammar',tagLabel:'文法',time:10,
+content:`
+<h2>日本語の時制はゆるい。英語の時制は厳格です。</h2>
+<p>日本語で「昨日、友達とご飯食べた」と言っても「食べてた」と言っても、だいたい同じ意味です。しかし英語では、"I ate lunch."、"I was eating lunch."、"I have eaten lunch." は<strong>すべて別の意味</strong>になります。日本語ではどれも「食べた」で済んでしまうのに、英語では「時間のどこにいるか」を正確に表現しなければならないのです。</p>
+
+<h2>時制は暗記するものではなく、「地図」で理解するもの</h2>
+<p>時制をルールとして丸暗記しようとすると混乱します。代わりに、頭の中に「時間の地図」を描いてみてください。左が過去、真ん中が今、右が未来。この地図の上にスタンプを押していくイメージです。</p>
+
+<div class="callout"><div class="callout-title">🗺️ 時間の地図</div><strong>過去形</strong>は、地図の左側のどこかに📍ピンを刺す動作です。「昨日のこの時点」とピンポイントで指す。"I <strong>played</strong> soccer yesterday." これは「昨日」という過去の1点を指しています。<br><br><strong>現在形</strong>は、地図の上に長い線━━を引く動作です。「いつもやっていること」「習慣」を表します。"I <strong>play</strong> soccer every day." 今日も明日も、ずっとやっている。<br><br><strong>未来形</strong>は、地図の右側に→矢印を向ける動作です。"I <strong>will play</strong> soccer tomorrow." まだ起きていない、これからの話です。<br><br><strong>進行形</strong>は、「今この瞬間」を📸カメラで撮影する動作です。"I <strong>am playing</strong> soccer now." まさに今やっている最中。動いている場面を切り取ったスナップ写真です。</div>
+
+<h2>中3の壁——現在完了形を「橋」で理解する</h2>
+<p>中学3年で登場する現在完了形（have ＋ 過去分詞）は、多くの人がつまずくポイントです。でも「地図」で考えれば、じつはシンプルです。</p>
+<p>過去形は「過去にピンを刺す」。過去のことであって、今とは関係がありません。"I <strong>lost</strong> my key."（鍵をなくした）。これは過去の事実を述べているだけ。もう見つかったかもしれません。</p>
+<p>一方、現在完了形は「過去から今まで橋がかかっている」イメージです。"I <strong>have lost</strong> my key."（鍵をなくしてしまった）。こちらは「なくした」という過去の出来事が、<strong>今の自分に影響を与えている</strong>ことを表しています。「だから今、困っている」というニュアンスがあるのです。</p>
+
+<h3>現在完了形には3つの意味があります</h3>
+<p><strong>①継続（ずっと〜している）</strong>："I have lived in Okinawa for ten years." 10年前から今まで、ずっと沖縄に住んでいる。過去から今への「長い橋」です。</p>
+<p><strong>②経験（〜したことがある）</strong>："I have been to Tokyo twice." 東京に2回行ったことがある。過去の経験が今の自分の中に残っている。</p>
+<p><strong>③完了（もう〜した）</strong>："I have already finished my homework." もう宿題を終わらせた。「終わらせた」という行為が「今、宿題をする必要がない」という結果につながっている。</p>
+
+<div class="exam-box"><div class="exam-title">📝 時制問題の即効テクニック</div>穴埋め問題で時制を問われたら、<strong>「時間を表す言葉」を探してください</strong>。これが見つかれば、時制は自動的に決まります。<br><br>yesterday / last week / ~ ago → <strong>過去形</strong><br>every day / usually / always → <strong>現在形</strong><br>now / right now / at the moment → <strong>進行形</strong><br><br>
+<strong>現在完了形のキーワード一覧：</strong><br>
+<span class="en">since ~</span>（〜以来）※うしろは起点：since 2020 / since I was a child<br>
+<span class="en">for ~</span>（〜の間）※うしろは期間：for three years / for a long time<br>
+<span class="en">ever</span>（今までに）/ <span class="en">never</span>（一度も〜ない）→ 経験を問う<br>
+<span class="en">already</span>（もう〜した）/ <span class="en">yet</span>（まだ・もう）→ 完了を問う<br>
+<span class="en">just</span>（ちょうど〜したところ）→ 完了を問う<br>
+すべて → <strong>現在完了形</strong><br><br>
+tomorrow / next week / tonight → <strong>未来</strong><br><br>時間ワードはいわば「時制の答えが書かれたカンニングペーパー」です。問題文の中に必ず隠されています。</div>
+`},
+
+{id:12,section:'grammar',title:'なぜ英語は主語を省略しないのか',desc:'英作文で最も多い減点を、たった一つの意識で防ぐ方法',tag:'grammar',tagLabel:'文法',time:8,
+content:`
+<h2>「暑いね」を英語にすると、なぜ "It" が必要なのか</h2>
+<p>「暑いね」を英語にすると "It is hot." です。この "It" って何でしょうか。何が暑いのか？ 誰が暑いのか？ じつはこの It に深い意味はありません。<strong>主語の席に何かを座らせないと、英語は文として成り立たない</strong>。だから仕方なく It を座らせているのです。</p>
+<p>日本語は世界的にも珍しいくらい主語を省略する言語です。「行こう」「食べた？」「わかる」「暑いね」——ぜんぶ主語がありません。それでも完璧に通じます。日本語は「文脈と空気で補う」言語だからです。</p>
+<p>しかし英語は「空気を読んでくれない」言語です。主語が書かれていなければ、本当に誰のことかわからない。だから英語では<strong>どんなに短い文でも、必ず主語を書く</strong>必要があります。</p>
+
+<h2>入試の英作文で一番多い減点は「主語忘れ」</h2>
+<p>これは採点の現場でよく言われることです。文法的に正しい表現を使っていても、主語がなければ大幅減点になります。日本語の感覚で「昨日サッカーした」と考えて "Played soccer yesterday." と書いてしまう。正しくは "<strong>I</strong> played soccer yesterday." です。たった一語の I を忘れただけで、文全体が不正解になってしまうのです。</p>
+
+<div class="callout"><div class="callout-title">💡 特に危険な「〜するのは…だ」構文</div>「サッカーをするのは楽しい」を英語にしたとき、"Is fun to play soccer." と書いてしまう人が非常に多いです。正しくは "<strong>It</strong> is fun to play soccer." または "<strong>Playing soccer</strong> is fun." です。日本語には主語がなくても成立する文がたくさんありますが、英語ではそうはいきません。</div>
+
+<h2>「It」の不思議な使い方</h2>
+<p>英語の It には、じつにさまざまな使い方があります。天気を表すとき（"It is rainy."）、時間を表すとき（"It is 3 o'clock."）、距離を表すとき（"It is 5 km to the station."）。どれも It に具体的な意味はありません。文法上、主語の席を埋めるために置かれているだけです。これを「形式主語の it」と呼びます。</p>
+<p>さらに重要なのが "It is ... to ～" の構文です。「～するのは…だ」と言いたいとき、英語では It を主語にして "It is fun to play soccer."（サッカーをするのは楽しい）と表現します。この形は入試で非常に多く出題されます。</p>
+
+<p>英作文を書いたら、提出する前にたった3秒、次の3つを確認してください。<strong>①主語はあるか。②動詞はあるか。③ピリオドはあるか。</strong>この3秒チェックだけで、防げる減点は驚くほど多いのです。</p>
+
+<div class="exam-box"><div class="exam-title">📝 主語忘れを防ぐ魔法の質問</div>英文を書く前に、自分にこう聞いてみてください。「<strong>だれが？</strong>」。「楽しかった」→ だれが？→ <strong>I</strong> had fun. 「雨が降っている」→ だれが？→ <strong>It</strong> is raining. 「英語は大切だ」→ だれが？→ <strong>English</strong> is important. この一言を自分に問いかけるだけで、主語忘れはほぼゼロになります。</div>
+`},
+
+{id:13,section:'grammar',title:'-ingの正体 ― 3つの顔を持つ不思議なことば',desc:'進行形・動名詞・形容詞——同じ形なのに役割が違うナゾを解く',tag:'grammar',tagLabel:'文法',time:9,
+content:`
+<h2>-ingは「〜している」だけではありません</h2>
+<p>"playing" という単語を見たら、「遊んでいる」と訳す人が多いでしょう。でも -ing には<strong>3つのまったく異なる使い方</strong>があります。この3つを区別できるようになると、英語の理解が一段階深くなります。</p>
+
+<h2>顔①：進行形の -ing ——「今まさにその瞬間」</h2>
+<p>"He <strong>is playing</strong> soccer now." これはおなじみの進行形です。be動詞＋-ing で「今まさにやっている最中」を表します。時制の章で説明した「カメラのスナップ写真」のイメージですね。動いている場面をパシャッと撮影した感覚です。</p>
+
+<h2>顔②：動名詞の -ing ——「〜すること」</h2>
+<p>"<strong>Playing</strong> soccer is fun." この文の Playing は「遊んでいる」ではなく、「サッカーをする<strong>こと</strong>」という意味です。動詞を名詞に変身させている。だから「動名詞」と呼ばれます。主語の位置に来ることもありますし、"I enjoy <strong>playing</strong> soccer." のように目的語の位置に来ることもあります。</p>
+<p>動詞（play）に -ing をつけることで、「遊ぶ」という<strong>動作</strong>を「遊ぶこと」という<strong>概念</strong>に変換しているのです。日本語の「の」に近い働きといえるかもしれません。「走る<strong>の</strong>が好き」の「の」が、動詞を名詞化しているのと同じ原理です。</p>
+
+<h2>顔③：形容詞としての -ing ——「〜している○○」「〜させるような」</h2>
+<p>"The <strong>sleeping</strong> baby is cute."（眠っている赤ちゃんはかわいい）。ここでの sleeping は baby を修飾する形容詞として働いています。「どんな赤ちゃん？」→「眠っている赤ちゃん」。</p>
+<p>"The movie was <strong>exciting</strong>."（その映画はワクワクさせるものだった）。ここでの exciting も形容詞です。おもしろいのは、excited（ワクワクした）との違い。exciting は「ワクワク<strong>させる</strong>」もの、excited は「ワクワク<strong>している</strong>」人。映画は exciting、映画を見た人が excited です。</p>
+
+<div class="callout"><div class="callout-title">💡 3つの顔の見分け方</div>見分け方はシンプルです。<strong>be動詞＋-ing</strong> なら進行形。<strong>-ingが主語や目的語の位置にある</strong>なら動名詞。<strong>-ingが名詞を修飾している</strong>なら形容詞。迷ったら「〜している」と訳して意味が通るか、「〜すること」と訳して意味が通るかを試してみてください。</div>
+
+<div class="exam-box"><div class="exam-title">📝 入試超頻出パターン</div>enjoy、finish、stop、practice のうしろには<strong>必ず -ing が来ます</strong>。to不定詞は使えません。"I enjoy <strong>reading</strong> books." は正しいですが、"I enjoy <strong>to read</strong> books." は文法的に間違いです。この「-ingしか使えない動詞」は入試で繰り返し問われるポイントです。</div>
+`},
+
+{id:14,section:'grammar',title:'toのひみつ ― 前置詞と不定詞、2つの顔',desc:'同じ to なのに意味が違う——その謎を「矢印」で解く',tag:'grammar',tagLabel:'文法',time:9,
+content:`
+<h2>toの本質は「→（矢印）」</h2>
+<p>"I went to school." の to と、"I want to study." の to。どちらにも to が入っていますが、文法的にはまったく別物です。しかし、根っこの感覚は同じです。<strong>to は「→（矢印）」</strong>。何かに向かっていく、何かを指し示すイメージです。</p>
+<p>前置詞の to は「場所や相手への矢印」です。"I went <strong>to</strong> school."（学校へ→向かった）。"I gave a book <strong>to</strong> her."（彼女に→渡した）。物理的な方向を指しています。</p>
+<p>不定詞の to は「これからやることへの矢印」です。"I want <strong>to</strong> study."（勉強すること→を望んでいる）。まだやっていないこと、これから向かう行動を指しています。矢印が「未来の動作」に向いているのです。</p>
+
+<h2>見分け方は驚くほど簡単です</h2>
+<p><strong>to のうしろが名詞なら前置詞</strong>。"I went to <strong>school</strong>."（school は名詞）。<strong>to のうしろが動詞の原形なら不定詞</strong>。"I want to <strong>study</strong>."（study は動詞の原形）。これだけです。うしろの単語を見れば、一瞬で判断できます。</p>
+
+<h2>不定詞の3つの使い方</h2>
+<p><strong>①名詞的用法</strong>（〜すること）：不定詞が名詞のように働きます。"<strong>To study</strong> English is important."（英語を勉強<strong>すること</strong>は大切だ）。ここでは To study English が文の主語になっています。</p>
+<p><strong>②副詞的用法</strong>（〜するために／〜して）：不定詞が「目的」や「感情の原因」を表します。"I went to the park <strong>to play</strong>."（遊ぶ<strong>ために</strong>公園に行った）。"I'm glad <strong>to hear</strong> that."（それを聞いて嬉しい）。</p>
+<p><strong>③形容詞的用法</strong>（〜するための）：不定詞が名詞を修飾します。"I need something <strong>to drink</strong>."（飲む<strong>ための</strong>何か＝飲み物が必要）。</p>
+
+<div class="callout"><div class="callout-title">💡 迷ったときの判断法</div>to ＋ 動詞の原形が出てきたら、3つの訳を当てはめてみてください。「〜すること」「〜するために」「〜するための」。しっくりくるものが正解です。多くの場合、文脈を読めば自然にわかります。</div>
+
+<div class="exam-box"><div class="exam-title">📝 入試頻出の to 表現</div>want to / need to / try to / hope to / decide to / begin to / start to ——これらは「〜すること」を目的語にとる表現で、入試では頻出中の頻出です。「toのうしろは動詞の原形」というルールだけ覚えておけば、穴埋め問題で迷うことはありません。</div>
+
+<h2>to不定詞と動名詞の使い分け</h2>
+<p>「〜すること」を表す方法は to不定詞（to＋動詞の原形）と動名詞（-ing）の2つがあります。どちらを使うかは動詞によって決まっています。</p>
+<p>to不定詞は「→（矢印）」のイメージ通り、<strong>未来に向かう動作</strong>と相性がよいのです。want to（〜したい）、hope to（〜することを望む）、decide to（〜することを決める）——すべて「これからやること」を指しています。一方、動名詞（-ing）は<strong>すでにやっていること</strong>と相性がよいです。enjoy -ing（〜することを楽しんでいる）、finish -ing（〜し終わる）、practice -ing（〜する練習をする）——どれも「行われている動作」の感覚です。</p>
+
+<div class="example-block">
+<strong>toをとる動詞：</strong>want / need / try / hope / decide / plan / wish to<br>
+<strong>-ingをとる動詞：</strong>enjoy / finish / stop / practice / keep / mind / give up -ing<br>
+<strong>どちらもOK：</strong>begin / start / like / love / hate（意味はほぼ同じ）
+</div>
+`},
+
+{id:15,section:'grammar',title:'canは何者？ ― 助動詞が伝える「話し手の気持ち」',desc:'助動詞を理解すると、英語の文に込められた感情が見えてきます',tag:'grammar',tagLabel:'文法',time:9,
+content:`
+<h2>助動詞は「気持ちボタン」</h2>
+<p>"I swim." は「私は泳ぐ」。ここに can をひとつ足すと "I <strong>can</strong> swim." で「泳げる」。動詞の前にポンと置くだけで、「能力がある」という話し手の気持ちが加わりました。</p>
+<p>助動詞とは、動詞の前に置いて<strong>「気持ち」や「判断」を上乗せする</strong>単語のことです。同じ動詞でも、どの助動詞をつけるかで意味がガラッと変わります。いわば、感情を選ぶ「ボタン」のようなものです。</p>
+
+<h3>入試に出る6つの助動詞</h3>
+<p><strong>can</strong>（〜できる）は「能力」や「許可」を表します。"I <strong>can</strong> speak English."（英語を話す能力がある）。"You <strong>can</strong> use my pen."（私のペンを使ってもいいよ）。</p>
+<p><strong>will</strong>（〜するだろう／〜するつもりだ）は「未来」や「意志」を表します。"It <strong>will</strong> rain tomorrow."（明日雨が降るだろう）。"I <strong>will</strong> help you."（手伝ってあげるよ）。</p>
+<p><strong>must</strong>（〜しなければならない／〜に違いない）は「義務」や「確信」を表します。"You <strong>must</strong> study hard."（一生懸命勉強しなければならない）。"He <strong>must</strong> be tired."（彼は疲れているに違いない）。</p>
+<p><strong>may</strong>（〜してもよい／〜かもしれない）は「許可」や「推量」を表します。"You <strong>may</strong> sit down."（座ってもいいですよ）。"It <strong>may</strong> snow tonight."（今夜雪が降るかもしれない）。</p>
+<p><strong>should</strong>（〜すべきだ）は「助言」を表します。"You <strong>should</strong> go to bed early."（早く寝たほうがいいですよ）。</p>
+<p><strong>shall</strong>（〜しましょうか）は「提案」に使います。"<strong>Shall</strong> I open the window?"（窓を開けましょうか？）。</p>
+
+<div class="callout"><div class="callout-title">💡 助動詞の絶対ルール</div><strong>助動詞のうしろには、必ず「動詞の原形」が来ます</strong>。He can <strong>swim</strong>. は正しいですが、He can swims.（三単現のsがつく）、He can swimming.（-ingがつく）、He can to swim.（toがつく）はすべて間違いです。「助動詞＋原形」。これは例外のない絶対ルールです。</div>
+
+<h2>入試最大のひっかけ：must not と don't have to</h2>
+<p>must には似た表現として have to があります。どちらも「〜しなければならない」という意味ですが、否定形にしたときに意味がまったく逆になります。</p>
+<p><strong>must not</strong>は「〜してはいけない」（禁止）。"You must not run here."（ここで走ってはいけない）。<strong>don't have to</strong>は「〜しなくてもよい」（不必要）。"You don't have to run."（走らなくてもいいですよ）。</p>
+<p>「禁止」と「不必要」では意味が正反対です。これは入試で繰り返し問われる超頻出ポイントなので、しっかり区別しておきましょう。</p>
+
+<div class="exam-box"><div class="exam-title">📝 まとめ</div>助動詞＋動詞の原形。これが鉄則です。そして must not（禁止）と don't have to（不必要）の違い。この2つを押さえるだけで、助動詞の問題はほぼ完璧に解けるようになります。</div>
+`},
+
+{id:16,section:'grammar',title:'受動態は「カメラの向き」が変わる文法',desc:'能動態と受動態の違いを、映画の撮影で理解する',tag:'grammar',tagLabel:'文法',time:9,
+content:`
+<h2>「誰がやったか」より「何が起きたか」が大事なとき</h2>
+<p>"Tom broke the window."（トムが窓を割った）と "The window was broken by Tom."（窓がトムによって割られた）。この2つの文は、伝えている事実は同じです。ではなぜ、わざわざ2通りの言い方があるのでしょうか。</p>
+<p>答えは<strong>「カメラの向き」</strong>で理解できます。映画の撮影を想像してみてください。能動態 "Tom broke the window." では、カメラはトムを映しています。トムが主役で、「トムが何をしたか」が話の中心です。一方、受動態 "The window was broken." では、カメラが割れた窓を映しています。窓が主役で、「窓に何が起きたか」が話の中心なのです。</p>
+
+<h2>受動態が本当に力を発揮する場面</h2>
+<p>受動態は「誰がやったかわからないとき」や「誰がやったかよりも、何が起きたかのほうが重要なとき」に使われます。</p>
+<p>"English <strong>is spoken</strong> all over the world."（英語は世界中で話されている）。誰が話しているかは問題ではなく、英語が世界的に使われているという事実が大切です。"This temple <strong>was built</strong> 500 years ago."（この寺は500年前に建てられた）。500年前に建てた人の名前はもうわかりません。大事なのは「500年前に建てられた」という歴史です。"The game <strong>was canceled</strong>."（試合は中止になった）。誰が中止を決めたかより、中止になったという事実が重要です。</p>
+
+<h2>受動態のつくり方</h2>
+<p>つくり方はシンプルです。<strong>be動詞＋過去分詞</strong>。時制はbe動詞の部分で調整します。現在なら is/am/are ＋ 過去分詞（"English <strong>is spoken</strong>..."）。過去なら was/were ＋ 過去分詞（"This picture <strong>was painted</strong> by Picasso."）。未来なら will be ＋ 過去分詞（"The concert <strong>will be held</strong> next week."）。</p>
+<p>「by ＋ 行為者」は省略されることも多いという点も覚えておいてください。"The door was opened." で十分伝わる場合、わざわざ by someone とは書きません。</p>
+
+<h2>受動態を使いこなすと英作文が上手くなる</h2>
+<p>受動態は読むだけでなく、書くときにも役立ちます。英作文で「～が行われた」「～が使われている」と書きたい場面はよくあります。たとえば「この祭りは毎年開かれます」は "This festival is held every year." です。「英語は多くの国で使われています」は "English is used in many countries." です。</p>
+<p>受動態を使えると表現の幅が広がります。すべての文を「私は～しました」という能動態だけで書くよりも、受動態を混ぜることで文章に変化が生まれ、より自然な英語になるのです。</p>
+
+<div class="exam-box"><div class="exam-title">📝 並べ替え問題のコツ</div>受動態の並べ替え問題では、4つのステップで組み立てます。①主語（「〜される」もの）→ ②be動詞（時制に注意）→ ③過去分詞 → ④by＋行為者（あれば）。この順番を守るだけで、受動態の並べ替えは確実に解けます。</div>
+`},
+
+{id:17,section:'grammar',title:'関係代名詞は「2つの文を1つにする接着剤」',desc:'who, which, that——名前は難しいけれど、やっていることはシンプルです',tag:'grammar',tagLabel:'文法',time:9,
+content:`
+<h2>関係代名詞のやっていること</h2>
+<p>「関係代名詞」という名前を聞くだけで身構えてしまう人がいるかもしれません。でも、やっていることはとてもシンプルです。<strong>2つの文を1つにくっつける</strong>。それだけです。</p>
+<p>こんな2つの文があるとします。"I have a friend."（友達がいる）。"She lives in Tokyo."（彼女は東京に住んでいる）。この2つを1つにまとめると "I have a friend <strong>who</strong> lives in Tokyo."（東京に住んでいる友達がいる）。She が who に変わっただけです。who は「接着剤」の役割を果たしていて、2つの文をつなぎつつ、「その友達は……」という説明を追加しています。</p>
+
+<h2>3種類の関係代名詞</h2>
+<p><strong>who</strong> は、人について説明を追加するときに使います。"The boy <strong>who</strong> is playing soccer is Tom."（サッカーをしている男の子はトムです）。</p>
+<p><strong>which</strong> は、人以外のもの（動物や物）について説明を追加するときに使います。"The book <strong>which</strong> I bought yesterday is interesting."（昨日買った本はおもしろいです）。</p>
+<p><strong>that</strong> は万能選手です。人にも物にも使えます。迷ったら that を使えば、まず間違いありません。</p>
+
+<h2>「主格」と「目的格」——うしろの形で見分ける</h2>
+<p>関係代名詞のうしろに<strong>すぐ動詞が来る</strong>場合、それは「主格」です。"I know a man <strong>who speaks</strong> French." who のうしろにすぐ speaks という動詞が来ています。who がその文の中で主語の役割を果たしているのです。</p>
+<p>関係代名詞のうしろに<strong>主語＋動詞が来る</strong>場合、それは「目的格」です。"The cake <strong>which she made</strong> was delicious." which のうしろに she made（主語＋動詞）が来ています。目的格の関係代名詞は<strong>省略できる</strong>のが大きな特徴で、"The cake she made was delicious." と書いても正しい文です。</p>
+
+<h2>関係代名詞は「長い文」を読むためのカギ</h2>
+<p>関係代名詞を理解する最大のメリットは、<strong>長文読解がラクになる</strong>ことです。入試の長文には "The woman who lives next door told me about a festival that is held every summer." のような長い文がよく出てきます。関係代名詞の知識がなければ、この文を読み解くのは困難です。</p>
+<p>しかし関係代名詞の仕組みを知っていれば、「who lives next door」は woman の説明、「that is held every summer」は festival の説明だと見抜けます。メインの骨格は "The woman told me about a festival." というシンプルな文。修飾部分を取り外せば、どんなに長い文も<strong>短いシンプルな文の組み合わせ</strong>にすぎないのです。</p>
+
+<div class="exam-box"><div class="exam-title">📝 穴埋め問題の解き方</div>①空欄の前にある名詞を見る→人か物か？ ②人なら who か that、物なら which か that。 ③空欄のうしろを見る→すぐ動詞なら主格、主語＋動詞なら目的格。このステップで機械的に解けます。並べ替え問題なら、「説明される名詞」の直後に who/which/that を置き、そのあとに説明の文をつなげてください。</div>
+`},
+
+{id:18,section:'grammar',title:'比較は「天秤」で考える',desc:'more/most と -er/-est、迷わない判断基準があります',tag:'grammar',tagLabel:'文法',time:9,
+content:`
+<h2>比較表現の本質は「天秤」</h2>
+<p>英語の比較表現を理解するには、頭の中に天秤をイメージしてください。2つのものを天秤の左右にのせて、どちらが重いか（大きいか、速いか、美しいか……）を比べる。やっていることはそれだけです。</p>
+<p><strong>原級</strong>は天秤がつりあっている状態です。"Tom is <strong>as tall as</strong> Ken."（トムはケンと同じくらい背が高い）。2つが同じ重さで、天秤が水平を保っています。</p>
+<p><strong>比較級</strong>は天秤がかたむいている状態です。"Tom is <strong>taller than</strong> Ken."（トムはケンより背が高い）。トムのほうが重くて、天秤がかたむいています。</p>
+<p><strong>最上級</strong>は天秤が最大にかたむいた状態です。"Tom is <strong>the tallest</strong> in his class."（トムはクラスで一番背が高い）。全員を比較して、トムが頂点に立っています。</p>
+
+<h2>-er/-est か more/most か——迷わない判断基準</h2>
+<p>比較級と最上級のつくり方には、2つのパターンがあります。短い単語には -er/-est をつけ、長い単語には more/most をつけます。でも「短い」「長い」の基準は何でしょうか。</p>
+<p>基準は<strong>音節の数</strong>です。音節とは、単語を発音したときの「拍」の数です。tall は「トール」で1拍（1音節）。easy は「イー・ジー」で2拍（2音節）。beautiful は「ビュー・ティ・フル」で3拍（3音節）。</p>
+<p><strong>1〜2音節の短い単語には -er/-est</strong> をつけます。tall → taller → tallest。big → bigger → biggest（子音を重ねる）。easy → easier → easiest（y を i に変える）。</p>
+<p><strong>3音節以上の長い単語には more/most</strong> をつけます。beautiful → more beautiful → most beautiful。important → more important → most important。長い単語に -er をつけると発音しにくくなるので、代わりに前に more を置くわけです。</p>
+<p>そして、いくつかの重要な単語は<strong>不規則変化</strong>をします。good → better → best。bad → worse → worst。many/much → more → most。これは丸暗記するしかありませんが、数は少ないので安心してください。</p>
+
+<div class="callout"><div class="callout-title">💡 よくある間違い</div>"more bigger" や "most tallest" のように、-er と more、-est と most を同時に使ってしまうミスは非常に多いです。<strong>どちらか一方だけ</strong>を使います。短い単語なら -er/-est だけ、長い単語なら more/most だけ。両方つけるのは二重否定のようなもので、文法的に間違いです。</div>
+
+<div class="exam-box"><div class="exam-title">📝 入試頻出の比較パターン</div><strong>"one of the ＋最上級＋複数形"</strong>（最も〜なものの一つ）：Tokyo is one of the biggest <strong>cities</strong> in the world. 注意点は、名詞が<strong>複数形</strong>になること。<br><br><strong>"比較級 ＋ than any other ＋単数形"</strong>（他のどの〜よりも）：Mt. Fuji is higher than any other <strong>mountain</strong> in Japan. じつはこれは最上級と同じ意味。「他のどの山よりも高い」＝「一番高い」。こちらの名詞は<strong>単数形</strong>です。</div>
+`},
+{id:19,section:'vocab',title:'英単語は「イメージ」で覚える',desc:'日本語訳の丸暗記が危険な理由——getは「得る」ではありません',tag:'vocab',tagLabel:'語彙',time:9,
+content:`
+<h2>「get = 得る」と覚えた人が長文読解で苦しむ理由</h2>
+<p>英単語帳の最初のほうに載っている get の訳は「得る」です。しかし、この「得る」だけを覚えてしまうと、長文読解で困ることになります。get up（起きる）、get home（家に着く）、get angry（怒る）、get tired（疲れる）、get cold（寒くなる）、get better（良くなる）、get a cold（風邪をひく）。「得る」では、これらのどれも説明できません。</p>
+<p>get の本当のイメージは<strong>「ある状態に到達する」「何かが変化して新しい状態になる」</strong>です。get up は「起きている状態に到達する」、get angry は「怒っている状態に到達する」。このイメージで考えると、すべてがつながります。</p>
+
+<h2>基本動詞は「コアイメージ」で掴む</h2>
+<p>英語の基本動詞は、日本語訳ひとつでは捉えきれない広い意味を持っています。だからこそ、<strong>コアイメージ</strong>で覚えるのが効果的です。</p>
+<p><strong>take</strong> のコアイメージは「自分のほうに引き寄せる」。take a picture（写真を撮る＝風景を自分のものにする）、take a bus（バスに乗る＝手段を利用する）、It takes 30 minutes（30分かかる＝時間を消費する）。</p>
+<p><strong>make</strong> のコアイメージは「何かを作り出す、変化させる」。make a cake（ケーキを作る）、make a mistake（間違える＝間違いを作り出す）、make me happy（私を幸せにする＝幸せな状態に変化させる）。</p>
+<p><strong>run</strong> のコアイメージは「動き続ける、機能させる」。run a restaurant（レストランを経営する＝回していく）。"She runs a small cafe." を「彼女は小さなカフェを走る」と誤訳してしまう人がいますが、コアイメージを知っていれば「経営している」と正しく理解できます。</p>
+
+<div class="callout"><div class="callout-title">💡 なぜコアイメージが大切なのか</div>入試の長文で基本動詞が出てくるとき、教科書で習った意味とは<strong>違う意味で使われている</strong>ことがよくあります。"see the doctor"は「医者を見る」ではなく「診察を受ける」。"stand for"は「〜のために立つ」ではなく「〜を表す」。日本語訳を丸暗記するだけでは対応できません。コアイメージを掴んでいれば、文脈に合わせて柔軟に意味を推測できるようになるのです。</div>
+
+<h2>「コアイメージ」で覚えるべき7つの基本動詞</h2>
+<div class="example-block">
+<span class="en">get</span> =「ある状態に到達する」<br>
+get up(起きる) / get home(着く) / get angry(怒る) / get better(良くなる)<br><br>
+<span class="en">take</span> =「自分のほうに引き寄せる」<br>
+take a bus(乗る) / take a picture(撮る) / take time(時間がかかる)<br><br>
+<span class="en">make</span> =「何かを作り出す・変化させる」<br>
+make lunch(作る) / make a mistake(間違える) / make me happy(幸せにする)<br><br>
+<span class="en">run</span> =「動き続ける・機能させる」<br>
+run fast(走る) / run a restaurant(経営する) / run out of(なくなる)<br><br>
+<span class="en">have</span> =「手元にある状態」<br>
+have a book(持つ) / have lunch(食べる) / have a good time(過ごす)<br><br>
+<span class="en">put</span> =「ある場所に置く」<br>
+put on(着る/つける) / put away(片づける) / put off(延期する)<br><br>
+<span class="en">turn</span> =「方向を変える」<br>
+turn right(右へ曲がる) / turn on(つける) / turn into(〜に変わる)
+</div>
+
+<div class="exam-box"><div class="exam-title">📝 入試での心構え</div>長文読解で基本動詞が出てきたとき、暗記した訳語ひとつだけで判断しないでください。<strong>文脈から「この場面ではどういう意味だろう？」と推測する</strong>。上の表のコアイメージを知っていれば、未知の使い方に出会っても推測できるようになります。</div>
+`},
+
+{id:20,section:'vocab',title:'ネイティブが毎日使う動詞TOP15',desc:'この15語を深く知ることが、英語力の確かな土台になります',tag:'vocab',tagLabel:'語彙',time:9,
+content:`
+<h2>15個の動詞で日常英語の8割がカバーできます</h2>
+<p>英語には何万もの動詞がありますが、日常会話で本当によく使われるのはほんのわずかです。研究によれば、英語の日常会話の約80%は、わずか15個程度の基本動詞で成り立っています。その15語とは、<strong>be、have、do、say、get、make、go、know、take、see、come、think、look、want、give</strong> です。どれも見たことのある単語ばかりでしょう。問題は、これらの単語が文脈によってまったく違う意味になることです。</p>
+
+<h2>「知っている」つもりで「知らない」意味</h2>
+<p><strong>have</strong> は「持つ」だけではありません。have lunch（昼食を食べる）、have a good time（楽しい時間を過ごす）、have a cold（風邪をひいている）、have to do（〜しなければならない）。ひとつの動詞にこれだけの使い方があります。</p>
+<p><strong>say</strong> は「言う」ですが、"The sign says 'No Parking'." という文では、看板が主語です。看板は話しませんが、英語では「書いてある」ことを say で表現します。物が主語になっても使えるのは、英語ならではの感覚です。</p>
+<p><strong>look</strong> は「見る」ですが、"She looks tired." では「疲れているように見える」。うしろに形容詞が来ると「〜に見える」という意味に変わります。これは第24章で紹介するSVC型の文です。look、sound、taste、feel、smell はすべてこのパターンをとります。</p>
+<p><strong>see</strong> も「見る」ですが、"I see." と言えば「なるほど、わかりました」。"see the doctor" なら「医者に診てもらう」。目で見るという基本の意味から、「理解する」「会う」といった意味に広がっています。</p>
+
+<div class="callout"><div class="callout-title">💡 多義語が入試で問われる理由</div>入試が基本動詞の「意外な意味」を出題するのは、受験生の<strong>文脈を読む力</strong>を測りたいからです。"run" を見て自動的に「走る」と訳すのではなく、"She runs a small bakery." を見て「この文脈では『経営する』だ」と判断できるかどうか。問われているのは単語の暗記量ではなく、<strong>生きた英語を理解する力</strong>なのです。</div>
+
+<p>15個の基本動詞を「浅く広く」知っているだけでは不十分です。それぞれの動詞が文脈によってどう意味を変えるのか、「深く」理解することが本当の英語力につながります。</p>
+
+<h2>「意外な意味」が入試に出る動詞リスト</h2>
+<p>入試で実際に問われやすい「基本動詞の意外な意味」をまとめておきます。</p>
+<div class="example-block">
+<span class="en">run</span> a store =「経営する」（走るではない）<br>
+<span class="en">see</span> the doctor =「診察を受ける」（見るではない）<br>
+<span class="en">make</span> me happy =「私を幸せにする」（作るではない）<br>
+<span class="en">take</span> 30 minutes =「30分かかる」（取るではない）<br>
+<span class="en">have</span> a cold =「風邪をひいている」（持つではない）<br>
+<span class="en">stand</span> for =「〜を表す」（立つではない）<br>
+<span class="en">leave</span> a message =「伝言を残す」（去るではない）<br>
+<span class="en">hold</span> an event =「イベントを開催する」（持つではない）<br>
+<span class="en">say</span>（看板が主語）=「〜と書いてある」（言うではない）<br>
+<span class="en">look</span> tired =「疲れて見える」（見るではない → Ch37参照）
+</div>
+
+<div class="exam-box"><div class="exam-title">📝 長文読解での実践法</div>長文を読んでいて基本動詞の意味がしっくりこないとき、暗記した訳語に固執しないでください。前後の文を読んで、<strong>その場面で最も自然な意味を推測する</strong>。上の「意外な意味リスト」を知っているだけで、長文読解の正答率は確実に上がります。</div>
+`},
+{id:21,section:'vocab',title:'最初に覚えるべき単語の「優先順位」',desc:'全部覚えようとするから挫折する——戦略的に絞る方法',tag:'vocab',tagLabel:'語彙',time:8,
+content:`
+<h2>1,200語を全部覚える必要はありません</h2>
+<p>英語の教科書に出てくる単語は約1,200語。これを聞くと「そんなに覚えられない」と絶望する人もいるでしょう。でも安心してください。入試で本当に頻出なのは400〜500語程度。さらに「書ける必要がある」単語は<strong>100語程度</strong>しかありません。</p>
+<p>大切なのは「全部覚えよう」とすることではなく、<strong>優先順位をつける</strong>ことです。すべてを同じ熱量で覚えようとするから挫折するのです。</p>
+
+<h2>3つのランクに分けて考える</h2>
+<p><strong>Sランク（約100語）</strong>は「書ける＋読める＋聞ける」が必要な単語。英作文で使う基本中の基本です。like、want、because、important、think、enjoy など。これらは完璧にしてください。</p>
+<p><strong>Aランク（約300語）</strong>は「読める＋聞ける」でOK。長文やリスニングで出てきますが、自分で書く必要はあまりありません。environment、communicate、experience など。意味がわかれば十分です。</p>
+<p><strong>Bランク（残りすべて）</strong>は「見たことがある」レベルで構いません。文脈から意味を推測できればよいのです。</p>
+
+<h2>効率的な覚え方の科学</h2>
+<p>もっとも非効率なのは「単語だけを一語ずつ暗記する」方法です。代わりに<strong>文ごと覚える</strong>方法が効果的です。"I enjoy reading books." をまるごと覚えれば、enjoy のうしろに -ing が来ること、reading の意味、文の組み立て方が同時に身につきます。</p>
+<p>もうひとつ重要なのは<strong>反復の回数</strong>です。1日に100語を1回見るよりも、20語を5回見るほうがはるかに記憶に残ります。脳は「何度も出会う情報＝重要な情報」と判断して長期記憶に保存するからです。寝る前の5分間に20語見る。翌朝もう一度見る。これだけで定着率が劇的に変わります。</p>
+
+<h2>「忘れる」のは正常です</h2>
+<p>「覚えたはずなのに忘れた」と落ち込む必要はまったくありません。人間の脳は忘れるようにできています。心理学者エビングハウスの研究によれば、新しく学んだ情報は1日後に約70%忘れてしまいます。しかし<strong>忘れかけたタイミングで復習すると、記憶の定着率が飛躍的に上がる</strong>ことも同時にわかっています。</p>
+<p>つまり「忘れたからダメだ」ではなく、「忘れかけたときこそ復習のベストタイミング」なのです。1回目の学習→翌日の復習→3日後の復習→1週間後の復習。このサイクルを回すだけで、同じ単語を何十回も書くよりずっと効率よく定着します。</p>
+
+<div class="exam-box"><div class="exam-title">📝 覚え方の3つの鉄則</div>① <strong>文で覚える</strong>——単語単体では使えません。"I enjoy reading books." のように、文ごと覚えましょう。<br>② <strong>反復が命</strong>——1回で覚えようとせず、5回、10回と繰り返し出会うことが大切です。<br>③ <strong>書く練習はSランクだけ</strong>——まず「読める・聞ける」を優先し、書く練習は本当に必要な100語だけに絞りましょう。</div>
+`},
+
+{id:22,section:'vocab',title:'テストで絶対出る！間違えやすい10のポイント',desc:'みんなが同じ場所で点を落としている——その対策法',tag:'exam',tagLabel:'入試',time:9,
+content:`
+<h2>「みんなが間違える問題」を先につぶす戦略</h2>
+<p>入試の英語には「多くの受験生が同じ場所で間違える」という定番のポイントがあります。裏を返せば、この定番のポイントを事前に知っておくだけで、ライバルに差をつけることができるのです。ここでは特に頻度が高い10のポイントを、なぜ間違えやすいのかという理由とともに紹介します。</p>
+
+<h3>① 三単現のs忘れ</h3>
+<p>主語が he、she、it、または人名などの三人称単数で、時制が現在のとき、動詞に s をつけるルールです。"She <strong>plays</strong> tennis every day." が正しく、"She play tennis." は間違いです。日本語には動詞の形が主語で変わる感覚がないため、つい忘れてしまいます。対策は、英作文を書いたあとに「主語は三人称単数か？ 時制は現在か？」と確認する習慣をつけることです。</p>
+
+<h3>② have のうしろは過去分詞</h3>
+<p>現在完了形では have のうしろに過去分詞（不規則動詞の3列目）が来ます。"I have <strong>gone</strong> to Tokyo." が正しく、"I have went to Tokyo." は間違いです。went は過去形であって過去分詞ではありません。不規則動詞の3列目を正確に覚えることが対策です。</p>
+
+<h3>③ much と many の使い分け</h3>
+<p>many は数えられる名詞（books、people、dogs など）に、much は数えられない名詞（water、time、money など）に使います。迷ったら a lot of を使えば両方に対応できるので安心です。</p>
+
+<h3>④ there is と there are の使い分け</h3>
+<p>うしろに来る名詞が単数なら is、複数なら are です。"There <strong>is</strong> a cat." / "There <strong>are</strong> two cats." 主語のように見える There ではなく、うしろの名詞に合わせるという点がポイントです。</p>
+
+<h3>⑤ 形容詞と副詞の混同</h3>
+<p>"She sings <strong>beautifully</strong>." が正しく、"She sings beautiful." は間違い。動詞を修飾するのは副詞（-ly がつく形）です。一方、"She is beautiful." のように be動詞のうしろなら形容詞のままでOK。「動詞の直後 → 副詞」「be動詞の直後 → 形容詞」と覚えましょう。</p>
+
+<h3>⑥ enjoy / finish のうしろは -ing だけ</h3>
+<p>"I enjoy reading." は正しいですが "I enjoy to read." は間違い。逆に "I want to read." は正しく "I want reading." は間違い。どの動詞が -ing をとり、どの動詞が to をとるかは、残念ながら覚えるしかありません。enjoy、finish、stop、practice は -ing。want、hope、decide、try は to。</p>
+
+<h3>⑦ 比較級と more の二重使用</h3>
+<p>"more bigger" は間違い。bigger だけで十分です。短い単語には -er だけ、長い単語には more だけ。両方つけてはいけません。</p>
+
+<h3>⑧ 疑問文の語順ミス</h3>
+<p>"What are you doing?" が正しく、"What you are doing?" は間違い。疑問詞のあとは必ず「be動詞/助動詞＋主語」の語順になります。</p>
+
+<h3>⑨ some と any の使い分け</h3>
+<p>肯定文では some、否定文・疑問文では any を使います。"I have <strong>some</strong> questions." / "Do you have <strong>any</strong> questions?"</p>
+
+<h3>⑩ 前置詞のミス</h3>
+<p>arrive <strong>at</strong> the station（to ではない）、listen <strong>to</strong> music（to がないと不正解）、look <strong>at</strong> the picture（at が必要）。前置詞は理屈よりもセットで丸暗記するのが確実です。</p>
+
+<div class="exam-box"><div class="exam-title">📝 この10個をつぶすだけで</div>これらは毎年のように出題される「定番の落とし穴」です。この10ポイントを意識するだけで、文法問題と英作文で<strong>5〜10点のアップ</strong>が見込めます。入試前日にもう一度この章を読み返してください。</div>
+`},
+
+{id:23,section:'vocab',title:'英語の「同音異義語」という罠',desc:'hear と here、their と there——同じ音なのに意味が違う不思議',tag:'vocab',tagLabel:'語彙',time:8,
+content:`
+<h2>発音が同じなのに、意味もスペルもまったく違う</h2>
+<p>英語には「発音が同じなのに意味が違う」単語のペアがたくさんあります。これを同音異義語（homophone）と呼びます。リスニングで「あれ、今のどっち？」と混乱する原因のひとつが、この同音異義語です。</p>
+<p>代表的なものを見てみましょう。<strong>hear</strong>（聞く）と <strong>here</strong>（ここに）。<strong>know</strong>（知る）と <strong>no</strong>（いいえ）。<strong>right</strong>（正しい・右）と <strong>write</strong>（書く）。<strong>see</strong>（見る）と <strong>sea</strong>（海）。<strong>to</strong>（〜へ）と <strong>two</strong>（2）と <strong>too</strong>（〜もまた）。<strong>one</strong>（1）と <strong>won</strong>（勝った＝win の過去形）。<strong>by</strong>（〜によって）と <strong>buy</strong>（買う）と <strong>bye</strong>（さよなら）。<strong>sun</strong>（太陽）と <strong>son</strong>（息子）。<strong>flower</strong>（花）と <strong>flour</strong>（小麦粉）。</p>
+
+<h2>なぜこれほど同音異義語が多いのか</h2>
+<p>英語の歴史に答えがあります。英語はもともとゲルマン語系の言語でしたが、そこにフランス語、ラテン語、北欧語など、さまざまな言語の単語が流れ込んできました。異なる起源を持つ単語が、何百年かけて発音が変化した結果、たまたま同じ発音になってしまったケースが数多くあるのです。</p>
+<p>スペルは昔の発音を反映しているので異なるまま残っていますが、実際の発音は合流してしまった。これが同音異義語の正体です。英語のスペルがめちゃくちゃに見えるのも、この歴史的な経緯によるものです。</p>
+
+<h2>リスニングでの対処法</h2>
+<p>同音異義語がリスニングで出てきたとき、音だけでは区別できません。頼りになるのは<strong>文脈</strong>です。"Can you <strong>hear</strong> me?" と聞こえたら、「聞こえる？」と尋ねている場面。"Come <strong>here</strong>, please." なら「ここに来て」。前後の言葉から、どちらの意味かは自然に判断できます。</p>
+<p>大切なのは、ひとつの単語を聞き取って即座に意味を決めつけるのではなく、<strong>文全体の流れの中で意味を判断する習慣</strong>をつけることです。これはリスニングに限らず、長文読解でも同じことが言えます。</p>
+
+<h2>同音異義語が英語のユーモアを生む</h2>
+<p>英語のジョークや駄洒落（pun）は、同音異義語を使ったものが多いです。"Why is six afraid of seven? Because seven eight（ate）nine!" というジョークは、"eight"（8）と "ate"（食べた）が同じ発音であることを利用しています。「7が9を食べた（ate）から、6は7を怖がっている」。英語のユーモアのかなりの部分は、この同音異義語の遊びから生まれているのです。</p>
+<p>こうした言葉遊びの感覚は、入試の直接的なスコアにはつながらないかもしれません。しかし、<strong>英語を「パズル」として楽しむ視点</strong>を持つことは、長い目で見て英語学習のモチベーションを支えてくれます。</p>
+
+<div class="exam-box"><div class="exam-title">📝 入試での同音異義語</div>リスニング問題では、同音異義語そのものが直接問われることはほとんどありません。しかし、聞き取った単語の意味を「文脈から正しく判断する力」は常に問われています。音だけに頼らず、<strong>場面と文脈から総合的に判断する</strong>姿勢が大切です。</div>
+`},
+
+{id:24,section:'exam',title:'文型は「動詞のうしろの景色」で見分ける',desc:'5文型の番号暗記は不要——もっとシンプルな方法があります',tag:'exam',tagLabel:'入試',time:9,
+content:`
+<h2>5文型を番号で覚えるのは効率が悪い</h2>
+<p>「第1文型SV、第2文型SVC、第3文型SVO……」と番号で暗記して、結局ぜんぶ忘れた——そんな経験はありませんか。文型を番号で覚えようとするのは効率の悪い方法です。代わりに、<strong>「動詞のうしろに何があるか」を見る</strong>だけで、文型は一瞬で判断できます。</p>
+
+<h2>動詞のうしろの「景色」で判断する</h2>
+<p>動詞のうしろに<strong>何もなければ</strong>、それはSV型です。"Birds fly."（鳥は飛ぶ）。fly のうしろには何もなく、それだけで文が完結しています。</p>
+<p>動詞のうしろに<strong>「＝（イコール）」になるもの</strong>があれば、SVC型です。"She is happy."（She ＝ happy）。主語と、動詞のうしろの単語がイコールの関係になっています。look、sound、taste、feel、become などの動詞は、このパターンをとることが多いです。</p>
+<p>動詞のうしろに<strong>「何を」にあたるもの</strong>があれば、SVO型です。"I like music."（何を？→ music）。もっとも一般的な文型です。</p>
+<p>動詞のうしろに<strong>「だれに」と「何を」の2つ</strong>があれば、SVOO型です。"He gave me a book."（だれに？→ me、何を？→ a book）。give、tell、show、teach、send、buy といった動詞がこのパターンをとります。</p>
+<p>動詞のうしろの<strong>2つの要素がイコール関係</strong>なら、SVOC型です。"She made me happy."（me ＝ happy にした）。make、call、name などがこのパターンです。</p>
+
+<h2>入試で本当に差がつくのは3つだけ</h2>
+<p>5文型をすべて完璧にする必要はありません。入試で差がつくのは、SVC型（look のうしろは形容詞であって副詞ではない）、SVOO型（give のうしろに名詞が2つ並ぶ）、SVOC型（make のうしろの2つがイコール関係）の3つです。この3つさえ押さえておけば、並べ替え問題も穴埋め問題も、動詞のうしろの「景色」を確認するだけで解けるようになります。</p>
+
+<h2>文型を知ると、英語の「骨格」が見える</h2>
+<p>文型の知識は、文法問題を解くためだけのものではありません。長文を読むときにも強力な武器になります。長い英文を目の前にしたとき、まず主語と動詞を見つけ、動詞のうしろに何があるかを確認する。これだけで文の骨格が見えます。修飾語や関係代名詞の部分をいったん外して、骨格だけを取り出せば、どんなに長い文もシンプルに理解できるのです。</p>
+<p>たとえば "The student who came from Okinawa told us an interesting story about her school life." という長い文も、骨格は "The student told us a story."（SVOO）です。残りはすべて修飾です。この「骨格を見抜く力」こそが、文型を学ぶ本当の価値です。</p>
+
+<div class="exam-box"><div class="exam-title">📝 並べ替え問題の即効テクニック</div>①主語を決める → ②動詞を置く → ③動詞が give/tell/show なら「人＋もの」を続ける → ④動詞が make/call なら「人＋状態」を続ける → ⑤残りを後ろへ。文型は「暗記」ではなく「動詞のうしろの景色」で判断してください。</div>
+`},
+
+{id:25,section:'exam',title:'過去形-edの秘密と不規則変化のパターン',desc:'なぜ go は goed にならないのか——歴史と覚え方の両面から',tag:'grammar',tagLabel:'文法',time:9,
+content:`
+<h2>go の過去形が goed ではない理由</h2>
+<p>play → played、like → liked。-ed をつけるだけで過去形になる。シンプルで美しいルールです。なのに、go → went、come → came、eat → ate。なぜこれらは -ed がつかないのでしょうか。</p>
+<p>じつは、-ed をつけるルールのほうが<strong>「後からできた新しいルール」</strong>なのです。大昔の英語（古英語）では、すべての動詞が今でいう不規則変化をしていました。動詞ごとに異なる変化をしていたのです。しかし時代が進むにつれ、「いちいち覚えるのは大変だから、-ed をつければ過去形ということにしよう」という簡略化が起きました。</p>
+<p>ところが、もっとも日常的に使われる基本動詞——go、come、eat、see、take、make、get——は、あまりにも頻繁に使われるため、古い形のまま残ってしまいました。つまり<strong>不規則動詞＝英語が生まれたときからある「古い単語」</strong>であり、<strong>よく使う単語ほど不規則</strong>なのです。</p>
+
+<h2>パターンを見つければ暗記の負担は激減する</h2>
+<p>不規則動詞を「バラバラに丸暗記」するのは地獄です。しかし、よく見ると<strong>パターン</strong>があります。</p>
+<p><strong>A-B-B型</strong>は、過去形と過去分詞が同じ形です。buy-bought-bought、think-thought-thought、teach-taught-taught、catch-caught-caught。-ought / -aught で終わるグループだと気づけば、まとめて覚えられます。</p>
+<p><strong>A-B-A型</strong>は、原形と過去分詞が同じ形です。come-came-come、become-became-become、run-ran-run。「もとの形に戻る」グループです。</p>
+<p><strong>A-B-C型</strong>は、3つともすべて異なります。go-went-gone、eat-ate-eaten、take-took-taken、write-wrote-written。もっとも大変ですが、超頻出なので優先的に覚えましょう。</p>
+<p><strong>A-A-A型</strong>は、まったく変化しません。cut-cut-cut、put-put-put、hit-hit-hit。変化しないのでじつは一番ラクなグループです。</p>
+
+<h2>入試に出る不規則動詞 完全リスト</h2>
+<p>以下は沖縄県入試で出題される可能性が高い不規則動詞を、パターン別にまとめたものです。現在完了形の問題では「3列目（過去分詞）」が問われます。</p>
+
+<div class="example-block">
+<strong>【A-B-B型】過去形と過去分詞が同じ</strong><br>
+buy-bought-bought / think-thought-thought / teach-taught-taught<br>
+catch-caught-caught / bring-brought-brought / build-built-built<br>
+find-found-found / have-had-had / hear-heard-heard<br>
+keep-kept-kept / leave-left-left / lose-lost-lost<br>
+make-made-made / meet-met-met / read-read-read<br>
+say-said-said / sell-sold-sold / send-sent-sent<br>
+sit-sat-sat / sleep-slept-slept / spend-spent-spent<br>
+stand-stood-stood / tell-told-told / understand-understood-understood<br>
+win-won-won<br><br>
+
+<strong>【A-B-A型】原形と過去分詞が同じ</strong><br>
+come-came-come / become-became-become / run-ran-run<br><br>
+
+<strong>【A-B-C型】3つとも違う（最重要！）</strong><br>
+go-went-gone / do-did-done / see-saw-seen<br>
+eat-ate-eaten / give-gave-given / take-took-taken<br>
+write-wrote-written / speak-spoke-spoken / know-knew-known<br>
+begin-began-begun / swim-swam-swum / sing-sang-sung<br>
+drink-drank-drunk / drive-drove-driven / break-broke-broken<br>
+fall-fell-fallen / get-got-gotten / grow-grew-grown<br>
+show-showed-shown / throw-threw-thrown / wear-wore-worn<br><br>
+
+<strong>【A-A-A型】変化なし（ラクです）</strong><br>
+cut-cut-cut / put-put-put / hit-hit-hit / set-set-set<br>
+shut-shut-shut / let-let-let
+</div>
+
+<div class="exam-box"><div class="exam-title">📝 覚え方のコツ</div>全部を一度に覚える必要はありません。まず<strong>A-B-C型の太字の9語</strong>（go, do, see, eat, give, take, write, speak, know）を完璧にしてください。これだけで現在完了形の問題の大半に対応できます。残りはパターンごとに「音の共通点」に注目すると覚えやすくなります。bought-thought-taught-caught はすべて -ought/-aught で終わる仲間です。</div>
+`},
+
+{id:26,section:'exam',title:'長文読解は「全部読まなくていい」',desc:'時間が足りない人のための戦略的速読法',tag:'exam',tagLabel:'入試',time:9,
+content:`
+<h2>入試最大の敵は「時間不足」</h2>
+<p>沖縄県入試の英語で、もっとも多い悩みは「長文を読む時間がない」ということです。長い英文を最初から最後まで一語一語読もうとすると、確かに時間が足りません。でも、じつは<strong>全部読む必要はない</strong>のです。</p>
+
+<h2>英語と日本語では「大事な情報の置き場所」が違う</h2>
+<p>日本語は「起承転結」の文化。一番大事なことは最後に来ます。だから日本語の文章は最後まで読まないと結論がわかりません。しかし英語は逆です。英語の文章は<strong>「結論→説明→まとめ」</strong>の順番で構成されます。</p>
+<p>つまり、各段落の<strong>最初の1文（トピックセンテンス）</strong>に、その段落で言いたいことの核心が書かれています。そして<strong>最後の1文</strong>にまとめや結論が来ることが多い。言い換えれば、各段落の最初と最後だけ読めば、文章全体の流れをかなり正確に掴めるのです。</p>
+
+<h2>3ステップ速読法</h2>
+<p><strong>ステップ1（約1分）：</strong>すべての段落の「最初の1文」だけを読みます。これで文章全体が何についての話なのか——環境問題なのか、留学体験なのか、友情の話なのか——という大枠がわかります。</p>
+<p><strong>ステップ2（約1分）：</strong>設問を先に読みます。何を聞かれているのかを把握することが目的です。「第3段落について聞いているな」「人物の気持ちを聞いているな」とわかれば、どこを重点的に読むべきかが見えてきます。</p>
+<p><strong>ステップ3（残りの時間）：</strong>設問に関係のある段落だけを精読します。全文を精読するのではなく、必要な部分だけにエネルギーを集中させるのです。</p>
+
+<div class="tip-box"><div class="tip-title">🎯 さらに速くなるコツ</div>設問に固有名詞（人名・地名・数字）が含まれている場合は、本文中でその単語を探してください。英語の固有名詞は大文字で始まるため、目で追うだけで見つけることができます。該当箇所の前後2〜3文を読めば、答えにたどり着けることがほとんどです。</div>
+
+<h2>内容一致問題の落とし穴</h2>
+<p>「本文の内容に合うものを選べ」という問題には、よくあるひっかけパターンがあります。数字のすり替え（本文は "three" なのに選択肢は "four"）、人物のすり替え（Tomの行動をKenの行動として書いてある）、時制のすり替え（過去のことを現在形で書いてある）。<strong>「本文とちょっとだけ違う」選択肢がもっとも危険</strong>です。</p>
+
+<h2>接続詞・つなぎ言葉は「道路標識」</h2>
+<p>長文読解をさらに速くするコツがあります。<strong>接続詞やつなぎ言葉（ディスコースマーカー）</strong>に注目することです。これらは文章の流れを示す「道路標識」のようなもの。標識を読めば、次にどんな内容が来るか予測できます。</p>
+
+<div class="example-block">
+<strong>【順接＝「だから」の仲間】</strong> → 前の内容の結果・結論が来る<br>
+<span class="en">so</span> / <span class="en">therefore</span> / <span class="en">as a result</span> / <span class="en">that is why</span><br><br>
+<strong>【逆接＝「しかし」の仲間】</strong> → 前の内容と反対の話が来る<br>
+<span class="en">but</span> / <span class="en">however</span> / <span class="en">although</span> / <span class="en">on the other hand</span><br><br>
+<strong>【追加＝「さらに」の仲間】</strong> → 前の内容に情報が追加される<br>
+<span class="en">and</span> / <span class="en">also</span> / <span class="en">in addition</span> / <span class="en">moreover</span><br><br>
+<strong>【例示＝「たとえば」の仲間】</strong> → 具体例が来る<br>
+<span class="en">for example</span> / <span class="en">such as</span> / <span class="en">like</span><br><br>
+<strong>【対比＝「一方で」の仲間】</strong> → 2つのものが比較される<br>
+<span class="en">while</span> / <span class="en">whereas</span> / <span class="en">unlike</span> / <span class="en">compared to</span>
+</div>
+
+<p>特に重要なのは<strong>however（しかし）</strong>です。however の後ろには、筆者が本当に言いたいことが来ることが多いのです。「○○だ。しかし△△だ」と書いてあったら、筆者の主張は△△のほう。入試の「筆者の意見を選べ」という問題では、however の後ろを重点的にチェックしてください。</p>
+
+<h2>「わからない単語」が出ても止まらない</h2>
+<p>長文読解でもうひとつ重要なのは、<strong>知らない単語が出てきても立ち止まらない</strong>ということです。長文にはかならず知らない単語が含まれています。これは意図的にそうなっています。入試が本当に測りたいのは、知らない単語があっても文章全体の意味を掴める力だからです。</p>
+<p>知らない単語に出会ったら、まずは飛ばして読み進めてください。文章全体の流れがわかれば、知らない単語の意味も「たぶんこういう意味だろう」と推測できるようになります。第5章で紹介した「文脈から推測する力」が、ここで活きてきます。</p>
+
+<div class="exam-box"><div class="exam-title">📝 長文読解の心構え</div>長文読解は「全部読む」勝負ではなく、<strong>「どこを読むかを判断する」</strong>勝負です。最初と最後を読む。設問を先に見る。キーワードを探す。知らない単語は飛ばす。この4つの戦略を身につけるだけで、時間不足の問題は大幅に改善されます。</div>
+`},
+
+{id:27,section:'exam',title:'英作文は「型」で書く',desc:'自由英作文に「自由」に書いてはいけない——テンプレートの力',tag:'exam',tagLabel:'入試',time:9,
+content:`
+<h2>「自由」英作文は「型」にはめるのが正解</h2>
+<p>沖縄県入試の英作文では「あなたの意見を英語で書きなさい」という形式がよく出ます。「自由に書いていい」と言われると、かえって何を書けばいいかわからなくなるものです。しかし、じつは自由英作文にも<strong>「勝てる型」</strong>があります。</p>
+
+<h2>最強の3文テンプレート</h2>
+<p><strong>1文目（意見）：</strong>I think that ～. まず自分の立場を明確にします。賛成なのか反対なのか、好きなのか嫌いなのか。ここを曖昧にすると、読み手（＝採点者）に伝わりません。</p>
+<p><strong>2文目（理由・具体例）：</strong>Because ～. / For example, ～. なぜそう思うのか、具体的な例を挙げます。理由や例があることで、意見に説得力が生まれます。</p>
+<p><strong>3文目（まとめ）：</strong>So, ～. / That is why ～. 最初の意見をもう一度まとめます。これで文章に「締まり」が出ます。</p>
+
+<h3>具体例を見てみましょう</h3>
+<p>問題：「中学生にスマートフォンは必要だと思いますか」</p>
+<div class="example-block"><span class="en">I think that smartphones are useful for students.</span><br><span class="ja">（スマートフォンは生徒に役立つと思います）</span><br><br><span class="en">For example, we can use them to study English.</span><br><span class="ja">（たとえば、英語の勉強に使うことができます）</span><br><br><span class="en">So, I think students should have smartphones.</span><br><span class="ja">（だから、生徒はスマートフォンを持つべきだと思います）</span></div>
+
+<p>どうでしょうか。使っている単語はすべて基本的なものばかりです。難しい表現はひとつも使っていません。それでも「意見→理由→まとめ」の型があるだけで、しっかりとした文章に見えます。</p>
+
+<h2>I think 以外にも使える「意見の型」</h2>
+<p>I think that... は万能ですが、それだけだと表現が単調になります。以下の表現も使えるようにしておくと、英作文の幅が広がります。</p>
+
+<div class="example-block">
+<strong>【意見を述べる表現】</strong><br>
+<span class="en">I think that ~.</span>（〜だと思います）← 最も基本<br>
+<span class="en">I believe that ~.</span>（〜だと信じています）← think より強い確信<br>
+<span class="en">In my opinion, ~.</span>（私の意見では〜）← 少しフォーマル<br><br>
+<strong>【賛成・反対を明確にする表現】</strong><br>
+<span class="en">I agree with the idea that ~.</span>（〜という考えに賛成です）<br>
+<span class="en">I don't agree with the idea that ~.</span>（〜という考えに反対です）<br><br>
+<strong>【理由を述べる表現】</strong><br>
+<span class="en">I have two reasons.</span>（理由は2つあります）← 複数理由の導入に便利<br>
+<span class="en">First, ~. Second, ~.</span>（第一に〜。第二に〜）<br>
+<span class="en">For example, ~.</span>（たとえば〜）<br>
+<span class="en">This is because ~.</span>（これは〜だからです）<br>
+<span class="en">Also, ~.</span>（また〜）← 理由を追加するとき<br><br>
+<strong>【まとめの表現】</strong><br>
+<span class="en">That is why I think ~.</span>（だから私は〜だと思います）<br>
+<span class="en">For these reasons, ~.</span>（これらの理由から〜）<br>
+<span class="en">So, ~.</span>（だから〜）← 最もシンプル
+</div>
+
+<h2>テンプレートを「4文型」に拡張する</h2>
+<p>3文テンプレートに1文足して4文にすると、さらに説得力が増します。</p>
+
+<div class="callout"><div class="callout-title">📝 4文テンプレート</div>
+<strong>文1（意見）：</strong>I think that ~.<br>
+<strong>文2（理由の導入＋第一理由）：</strong>I have two reasons. First, ~.<br>
+<strong>文3（第二理由 or 具体例）：</strong>Second, ~. / For example, ~.<br>
+<strong>文4（まとめ）：</strong>That is why I think ~. / For these reasons, ~.
+</div>
+
+<h3>実例：「中学生にスマートフォンは必要か」（4文版）</h3>
+<div class="example-block">
+<span class="en">I think that smartphones are useful for students.</span><br>
+<span class="en">I have two reasons. First, we can use them to study English.</span><br>
+<span class="en">Second, we can get information quickly when we need it.</span><br>
+<span class="en">For these reasons, I think students should have smartphones.</span>
+</div>
+
+<h3>実例：「制服は必要か」に反対する場合</h3>
+<div class="example-block">
+<span class="en">I don't think school uniforms are necessary.</span><br>
+<span class="en">First, students should be free to choose their own clothes.</span><br>
+<span class="en">Also, uniforms are expensive for some families.</span><br>
+<span class="en">That is why I think we don't need school uniforms.</span>
+</div>
+
+<h2>英作文でそのまま使える「便利フレーズ集」</h2>
+<p>どんなテーマが出ても使い回せるフレーズを持っておくと安心です。</p>
+
+<div class="example-block">
+<strong>【〜は大切です】</strong><br>
+<span class="en">~ is important for us.</span> / <span class="en">~ is good for our health.</span><br><br>
+<strong>【〜することができます】</strong><br>
+<span class="en">We can learn many things.</span> / <span class="en">We can enjoy ~.</span><br><br>
+<strong>【〜する機会があります】</strong><br>
+<span class="en">We have a chance to ~.</span> / <span class="en">It gives us a chance to ~.</span><br><br>
+<strong>【将来に役立ちます】</strong><br>
+<span class="en">It will be useful in the future.</span> / <span class="en">It will help us in the future.</span><br><br>
+<strong>【〜する人が増えています】</strong><br>
+<span class="en">More and more people ~.</span><br><br>
+<strong>【〜は楽しいです/良い経験です】</strong><br>
+<span class="en">It is a lot of fun.</span> / <span class="en">It is a good experience.</span>
+</div>
+
+<h2>高得点を取るための5つの鉄則</h2>
+<p><strong>①短い文で書く</strong>。長い文は間違いやすいです。1文10語以内を目安にしましょう。<strong>②知っている単語だけ使う</strong>。スペルに自信がない単語は、別の簡単な単語に言い換えてください。<strong>③最初に立場を明確にする</strong>。I think... / I don't think... で始めると、採点者に伝わりやすくなります。<strong>④理由を2つつける</strong>。First, ... Second, ... の構成が安定感抜群です。<strong>⑤文末にピリオドを忘れない</strong>。意外と多い減点ポイントです。</p>
+
+<div class="warn-box"><div class="warn-title">⚠️ やってはいけないこと</div>日本語を直訳しようとしないでください。日本語で考えた文が英語にしにくいと感じたら、<strong>「もっと簡単な日本語に言い換えてから英語にする」</strong>という手順を踏みましょう。「環境に配慮することは重要だ」→「自然を大切にすることは大切だ」→ "Taking care of nature is important." このように、自分が知っている表現で言い換える技術が、英作文の真のスキルです。</div>
+`},
+
+{id:28,section:'exam',title:'リスニング問題の「先読み」戦略',desc:'音声が流れる前の数秒間で、勝負はほぼ決まっています',tag:'exam',tagLabel:'入試',time:9,
+content:`
+<h2>リスニングは「耳」ではなく「目」で勝つ</h2>
+<p>リスニングが苦手な人は「英語が聞き取れない」と悩みます。しかし、本当の問題は「聞き取れない」ことではなく、<strong>「何を聞くべきかわかっていない」</strong>ことかもしれません。</p>
+<p>たとえば、音声が流れる前に選択肢を見たとします。選択肢が "7:00 / 7:30 / 8:00 / 8:30" だったら、何を聞くべきかは一目瞭然です。「時間を聞けばいいんだな」とわかります。選択肢が "library / park / school / hospital" なら「場所を聞けばいい」。聞くポイントがあらかじめわかっていれば、<strong>全文を完璧に聞き取る必要はない</strong>のです。</p>
+
+<h2>先読みの極意</h2>
+<p>音声が流れる前の数秒間に、選択肢や質問文を先に読む。これが「先読み」です。選択肢の内容から「時間？ 場所？ 人物？ Yes/No？」を判断し、何に集中して聞くべきかを決めてから音声に臨みます。この準備があるかないかで、正答率は驚くほど変わります。</p>
+
+<h2>聞き取りやすくなる3つの知識</h2>
+<p><strong>①音のつながり（リエゾン）</strong>を知っておくと、「あれ？ 聞こえた音と知っている単語が合わない」という混乱が減ります。"pick up" は「ピカップ」、"want to" は「ワナ」、"going to" は「ゴナ」と聞こえることがあります。これは英語が間違っているのではなく、自然な発音ではこのように音がつながるのです。</p>
+<p><strong>②弱く読まれる単語</strong>があることも知っておいてください。a、the、is、are、to、of、for、and といった機能語は、文の中で非常に弱く発音されます。ほとんど聞こえないこともあります。その代わり、名詞・動詞・形容詞といった内容語ははっきりと発音されます。<strong>「大事な単語だけが聞こえる」のは正常</strong>なのです。</p>
+<p><strong>③数字の聞き取り</strong>は多くの人が苦手とするポイントです。特に thirteen（13）と thirty（30）の区別が難しい。コツはアクセントの位置です。thirTEEN は後ろにアクセント、THIRty は前にアクセント。この違いを意識するだけで、かなり聞き分けられるようになります。</p>
+
+<h2>「全部聞き取れなくても正解できる」という事実</h2>
+<p>リスニングで100%聞き取れる人はいません。ネイティブ同士の会話でさえ、聞き逃しや聞き間違いは日常的に起きています。大切なのは「全部聞き取ること」ではなく、<strong>「正解に必要な情報だけを聞き取ること」</strong>です。</p>
+<p>たとえば「彼女はどこに行きましたか？」という設問なら、場所に関する単語（library, park, station など）だけを聞き取れれば正解できます。その前後の文が聞き取れなくても問題ありません。リスニングは「完璧に聞く」テストではなく、<strong>「必要な情報を拾う」テスト</strong>なのです。この認識を持つだけで、リスニングへの恐怖心は大きく軽減されるはずです。</p>
+
+<div class="exam-box"><div class="exam-title">📝 リスニング当日の手順</div>①問題用紙が配られたら<strong>即座に選択肢を読む</strong> → ②何を聞かれるかを予想する → ③音声が始まったら予想したポイントに集中 → ④1回目で答えを選び、2回目で確認。この手順を事前に決めておくだけで、本番の安心感がまったく違います。</div>
+`},
+
+{id:29,section:'exam',title:'対話文問題はパターンで解ける',desc:'「適切な応答を選べ」は5つのパターンを知っていれば怖くない',tag:'exam',tagLabel:'入試',time:8,
+content:`
+<h2>対話文の穴埋めは、実はパターンが決まっている</h2>
+<p>「次の対話の空欄に適切な文を入れなさい」という問題。自由に考えなきゃいけないように見えますが、じつは出題パターンはかなり限られています。主な5パターンを知っておけば、ほとんどの問題に対応できます。</p>
+
+<h3>パターン①：提案への応答</h3>
+<p>"Shall we go to the park?"（公園に行きませんか）や "Why don't we study together?"（一緒に勉強しない？）のような提案に対して、賛成なら "That sounds good." や "Sure, let's go."、断るなら "I'm sorry, but I can't." と答えます。提案を受けているのに "I'm fine, thank you." と答えるのは不自然なので注意してください。</p>
+
+<h3>パターン②：依頼への応答</h3>
+<p>"Can you help me?"（手伝ってくれますか）や "Could you open the window?"（窓を開けてくださいますか）のような依頼に対して、応じるなら "Sure." や "Of course." や "No problem."、断るなら "I'm sorry, but..." と答えます。</p>
+
+<h3>パターン③：感謝への応答</h3>
+<p>"Thank you very much." に対する応答は "You're welcome." が定番ですが、"No problem." や "My pleasure." も使われます。</p>
+
+<h3>パターン④：謝罪への応答</h3>
+<p>"I'm sorry I'm late." に対しては "That's OK." や "Don't worry about it." と答えます。謝罪されているのに "Thank you." と返すのは不自然です。</p>
+
+<h2>対話文の後半パターン</h2>
+
+<h3>パターン⑤：情報を聞く質問への応答</h3>
+<p>"How was your weekend?"（週末はどうだった？）には "It was great!" や "I had a good time." と答えます。"What do you think about...?"（〜についてどう思いますか）には "I think..." で始めます。</p>
+
+<h2>対話文特有の「省略」に注意</h2>
+<p>日常会話では、言わなくてもわかる部分を省略することがよくあります。"Want some?"（いる？）は "Do you want some?" の省略。"Sounds good."（いいね）は "That sounds good." の省略。入試の対話文では、こうした省略表現がそのまま選択肢に出ることがあります。正式な文法とは少し違う形に見えても、<strong>会話では自然な表現</strong>であることを知っておいてください。</p>
+
+<div class="exam-box"><div class="exam-title">📝 対話文攻略のコツ</div>①空欄の<strong>前の文</strong>を見る → 何を聞かれている/言われているか確認。②空欄の<strong>後の文</strong>も見る → 会話のつながりが自然かどうか確認。③5つのパターンのどれに当てはまるか判断する。④「省略形」が選択肢にあっても焦らない。前後の文脈を見れば、正解は自然と浮かび上がります。</div>
+`},
+
+{id:30,section:'exam',title:'過去問は「3回」解いて初めて効果が出る',desc:'同じ問題を繰り返すことの、科学的な意味',tag:'exam',tagLabel:'入試',time:8,
+content:`
+<h2>1回解いて終わりでは、ほとんど意味がありません</h2>
+<p>過去問を1回解いて「○○点だった」と記録して終わり。これはもっとも非効率な使い方です。過去問の本当の価値は点数を知ることではなく、<strong>自分の弱点を発見し、克服すること</strong>にあります。</p>
+
+<h2>3回解くことで何が変わるのか</h2>
+<p><strong>1回目は「現在地の確認」です。</strong>本番と同じ時間制限で解きます。点数を記録し、どの分野で何点取れて、どこで失点したかを把握します。</p>
+<p><strong>2回目は「分析と理解」です。</strong>翌日に答え合わせをし、間違えた問題を徹底的に分析します。知らない単語をすべてチェックし、長文は全文の意味を理解します。「なぜ間違えたのか」の原因を、問題ごとに書き出してください。</p>
+<p><strong>3回目は「定着の確認」です。</strong>1週間後にもう一度同じ問題を解きます。2回目で理解したはずの問題を、本当に自力で解けるかどうかの確認です。ここでまだ間違える問題があれば、それこそが<strong>あなたの「本当の弱点」</strong>です。</p>
+
+<h2>間違いには3つのタイプがある</h2>
+<p><strong>タイプA「知識不足」</strong>は、単語や文法を知らなかったために間違えたケースです。これは暗記で解決します。<strong>タイプB「ケアレスミス」</strong>は、知っていたのに間違えたケースです。三単現のsを忘れた、ピリオドを打ち忘れたなど。これはチェックリストを作って防ぎます。<strong>タイプC「時間不足」</strong>は、解く時間が足りなかったケースです。これは速読法（第26章参照）で解決します。</p>
+<p>原因が違えば対策も違います。すべての間違いを「勉強不足」で片づけてしまうと、効果的な対策ができません。</p>
+
+<h2>「同じ問題をやって意味あるの？」——あります</h2>
+<p>「一度解いた問題をもう一度やっても、答えを覚えてるから意味ないでしょ」と思うかもしれません。しかし、2回目・3回目の目的は「正解すること」ではありません。<strong>「なぜその答えになるのかを自分の言葉で説明できるようになること」</strong>が目的です。</p>
+<p>答えを覚えていても構いません。大切なのは、正解にたどり着くまでの<strong>思考のプロセス</strong>を再現できるかどうかです。「この長文では第2段落に答えのヒントがあって、the idea が前の段落の内容を指していて……」と、解き方を言語化できるようになれば、初見の問題にも同じ思考法を応用できるようになります。</p>
+<p>スポーツでも音楽でも、一流の選手やミュージシャンは同じ練習を何百回も繰り返します。繰り返しの中で体が動きを覚え、意識しなくても正しい動作ができるようになる。過去問の3回解きも同じ原理です。英語の問題を解く<strong>「型」が体に染みつく</strong>のです。</p>
+
+<h2>模試と過去問、どっちが大事？</h2>
+<p>結論から言えば、<strong>過去問のほうが圧倒的に大事</strong>です。模試は「今の実力を知る」ためのもの。過去問は「本番の問題に直接慣れる」ためのもの。入試本番に出題するのは模試の作成者ではなく、過去問を作ってきたのと同じ人たちです。出題の癖、問題の形式、文章の長さ、設問の聞き方——すべてが過去問にいちばん近い形で出題されます。</p>
+<p>過去問を3回解くことで、「この大問は毎年この形式で出る」「長文のテーマは毎年この分野から出やすい」というパターンが見えてきます。そのパターンを知っているだけで、本番の安心感がまったく違うのです。</p>
+
+<div class="exam-box"><div class="exam-title">📝 過去5年分の活用法</div>沖縄県入試は出題パターンが比較的安定しています。過去5年分を3回ずつ解けば、出題パターンが体に染みつきます。「このタイプの問題は前にも見たことがある」と思えた瞬間、それはもう勝利が近いサインです。</div>
+`},
+
+{id:31,section:'mind',title:'英語がデキる人がやっている5つの習慣',desc:'才能の差ではありません——毎日の「ほんの少し」が大きな差を生みます',tag:'mind',tagLabel:'マインド',time:9,
+content:`
+<h2>「才能がある人」は、じつは「習慣が違う人」</h2>
+<p>英語ができる同級生を見て、「あの人は才能があるからだ」と思ったことはありませんか。でもじつは、英語の得意・不得意を分けているのは才能ではなく、<strong>毎日やっていることのわずかな違い</strong>です。</p>
+
+<h2>5つの習慣の具体的な実践法</h2>
+
+<h3>習慣①：毎日5分だけ英語に触れる</h3>
+<p>「週末に3時間まとめて勉強する」よりも、「毎日5分だけ英語に触れる」ほうが、はるかに効果があります。脳科学の研究でわかっていることですが、脳は「繰り返し出会う情報」を「重要な情報」と判断し、長期記憶に保存します。たった5分でも、毎日続ければ脳は「英語は大事なんだ」と認識してくれるのです。3時間を1日だけやって6日休むよりも、5分を7日間続けるほうが記憶の定着率は圧倒的に高いのです。</p>
+
+<h3>習慣②：間違いを恐れない</h3>
+<p>「間違えたら恥ずかしい」という気持ちから、英語を話すことや書くことを避けてしまう人がいます。しかし<strong>間違いは学習のガソリン</strong>です。正解した問題よりも、間違えた問題のほうが記憶に残りやすいことは、多くの研究で示されています。つまり、間違えれば間違えるほど、効率的に学んでいるのです。</p>
+
+<h3>習慣③：知らない単語をまず「推測する」</h3>
+<p>知らない単語に出会ったとき、すぐに辞書を引くのは実は効率が悪い方法です。まず文脈から「たぶんこういう意味だろう」と推測し、その後で答え合わせをする。この「推測→確認」のサイクルが、脳を鍛えます。受け身で意味を教えてもらうよりも、能動的に推測するほうが、記憶への定着が何倍も良いのです。</p>
+
+<h3>習慣④：声に出して読む</h3>
+<p>教科書を黙読するだけの人と、声に出して読む人では、記憶の定着率がまったく違います。音読は目（視覚）＋口（運動）＋耳（聴覚）の3つを同時に使うため、脳への刺激が3倍になります。1ページだけでも構いません。毎日の音読を習慣にすると、英語が「体に染みつく」感覚を味わえるようになります。</p>
+
+<h3>習慣⑤：頭の中で英語をつぶやく</h3>
+<p>最初は1日1文で構いません。「今日は晴れだなあ……It's sunny today.」「お腹すいた……I'm hungry.」と、頭の中で英語をつぶやいてみてください。これを続けると、やがて「日本語→英語に翻訳する」という段階を飛ばして、<strong>英語が直接頭に浮かぶ</strong>ようになります。</p>
+
+<h2>「続かない」を前提にした設計を</h2>
+<p>「よし、毎日1時間勉強しよう！」と決意して3日で挫折した経験はありませんか。人間の意志力には限界があります。だからこそ、<strong>「意志力に頼らなくても続く仕組み」</strong>を作ることが大切です。たとえば「寝る前に歯を磨いたら、そのまま英単語帳を5秒だけ開く」と、すでにある習慣（歯磨き）に新しい習慣（英語）をくっつける。これを「習慣のチェーン」と言います。最初の5秒が勝負です。開いてしまえば、結局5分くらい見てしまうものです。</p>
+
+<div class="exam-box"><div class="exam-title">📝 今日から始められること</div>寝る前に英単語を5つだけ見る（5分）。教科書を1ページだけ音読する（3分）。頭の中で1文だけ英語でつぶやく（1分）。合計<strong>9分</strong>。毎日たった9分の習慣が、3ヶ月後のあなたを変えます。大切なのは「がんばる」ことではなく、「ハードルを下げて、とにかく続ける」ことです。</div>
+`},
+
+{id:32,section:'mind',title:'なぜ英語を勉強するのか ― テストの先にあるもの',desc:'入試の点数の向こう側に、英語が開いてくれる世界があります',tag:'mind',tagLabel:'マインド',time:9,
+content:`
+<h2>「英語なんて将来使わない」は本当でしょうか</h2>
+<p>「日本に住んでるなら英語いらないでしょ」。そう思う気持ちはわかります。たしかに、日本で普通に生活するだけなら、英語を話す場面はほとんどないかもしれません。でも、少しだけ視点を変えてみてください。</p>
+
+<h2>日本語だけでは、世界の97%にアクセスできない</h2>
+<p>インターネット上の情報の約60%は英語で書かれています。日本語の情報は約3%。この数字が意味することは明確です。<strong>日本語だけでは、世界の情報の97%に手が届かない</strong>のです。</p>
+<p>最新のゲーム情報、世界中のクリエイターが作る音楽や動画、科学の最先端の発見、新しいテクノロジーのニュース。これらの多くは、まず英語で発信されます。日本語に翻訳されるのを待つこともできますが、翻訳を待つということは、誰かのフィルターを通すということでもあります。英語ができれば、自分の目で直接世界を見ることができるのです。</p>
+
+<h2>英語は「未来の選択肢」を増やす投資</h2>
+<p>将来どんな仕事をするかは、まだ誰にもわかりません。でもひとつだけ確実に言えることがあります。<strong>英語ができる人の選択肢は、できない人の何倍も多い</strong>ということです。</p>
+<p>プログラマー、YouTuber、デザイナー、研究者、ゲームクリエイター、医師、起業家——どんな仕事に就くとしても、英語ができれば活躍の舞台が「日本」から「世界」に広がります。それは収入の話だけではありません。出会える人の数、体験できることの幅、人生の可能性そのものが広がるということです。</p>
+
+<h2>テストは入口にすぎません</h2>
+<p>高校入試の英語は、長い旅のほんの入口です。高校入試→高校の英語→大学入試→海外旅行→仕事→世界中の人々との出会い。今のテストは、この長い道のりの<strong>最初の一歩</strong>です。でも、最初の一歩を踏み出さなければ、その先には永遠にたどり着けません。</p>
+
+<div class="callout"><div class="callout-title">🌺 沖縄から世界へ</div>沖縄から世界は遠いと感じるかもしれません。でも英語を手に入れれば、世界はスマホの画面ひとつ分の距離になります。海の向こうで発信されている動画、音楽、ゲーム、情報——それらすべてが、英語という鍵ひとつで開く扉の向こうに広がっています。</div>
+
+<p>英語は完璧でなくていいのです。テストで100点を取る必要もありません。大切なのは、<strong>「英語っておもしろいかもしれない」と思える瞬間がひとつでもあること</strong>。この読み物が、あなたにとってその瞬間のきっかけになれていたら、これ以上嬉しいことはありません。</p>
+<div class="exam-box"><div class="exam-title">📝 この読み物を読み終えたあなたへ</div>ここまで読んだあなたは、英語の歴史、文法の「なぜ」、入試テクニック、そして英語を学ぶ意味まで、幅広い知識を手に入れました。入試本番で知らない単語に出会ったとき、難しい文法問題を見たとき、この読み物で学んだ「考え方」を思い出してください。暗記した知識は忘れることがありますが、<strong>「考え方」は一度身につけば一生使えます</strong>。</div>
+
+<p>さあ、入試に向けて一歩ずつ進んでいきましょう。あなたなら、きっとできます。</p>
+`}
+,
+
+{id:33,section:'grammar',title:'なぜ疑問文に Do が必要なのか',desc:'be動詞と一般動詞——英語の「2大グループ」を理解すれば文法の半分が解ける',tag:'grammar',tagLabel:'文法',time:9,
+content:`
+<h2>英語の動詞は「2種類」しかない</h2>
+<p>英語の文法がごちゃごちゃしてわからない——そう感じている人に、まず知ってほしいことがあります。<strong>英語の動詞は、たった2種類しかありません</strong>。be動詞（am, is, are, was, were）と、それ以外の一般動詞（play, eat, go, like, study...）。この2つは、まるで性格が正反対の兄弟のようなもので、文のつくり方がまったく違います。</p>
+
+<h2>be動詞は「自力で変身できる」動詞</h2>
+<p>be動詞は特別な能力を持っています。否定文をつくるとき、自分のうしろに not をつけるだけでOK。疑問文をつくるとき、自分が文の先頭に移動するだけでOK。<strong>ヘルパーなしで、自力で文を操れる</strong>のです。</p>
+<div class="example-block">
+<strong>【be動詞の場合】</strong><br>
+肯定文：He <span class="en">is</span> a student.<br>
+否定文：He <span class="en">is not</span> a student.（is のうしろに not を置くだけ）<br>
+疑問文：<span class="en">Is</span> he a student?（is が前に移動するだけ）
+</div>
+
+<h2>一般動詞は「ヘルパー」が必要</h2>
+<p>一般動詞（play, like, studyなど）には、be動詞のような特別な能力がありません。否定文や疑問文をつくるとき、自力では変身できないのです。そこで登場するのが<strong>助っ人の do</strong>。do は一般動詞の代わりに、否定や疑問の仕事を引き受けてくれるヘルパーです。</p>
+<div class="example-block">
+<strong>【一般動詞の場合】</strong><br>
+肯定文：He <span class="en">plays</span> soccer.<br>
+否定文：He <span class="en">does not</span> play soccer.（doesが否定を引き受ける。playは原形に戻る）<br>
+疑問文：<span class="en">Does</span> he play soccer?（doesが先頭に出る。playは原形に戻る）
+</div>
+
+<p>ここで重要なのは、does が登場すると、もとの動詞 plays から<strong>三単現の s が消えて原形 play に戻る</strong>ということです。does がすでに「三人称単数」の仕事を引き受けているため、play が s を持つ必要がなくなるのです。ひとつの文に同じ仕事をする人は2人もいらない、というわけです。</p>
+
+<h2>なぜ日本人はここで混乱するのか</h2>
+<p>日本語では肯定文も否定文も疑問文も、動詞の形はほとんど変わりません。「食べる」「食べない」「食べる？」——動詞の語尾が少し変わるだけです。ところが英語では、be動詞と一般動詞で否定・疑問のルールがまったく違う。<strong>2つのルールが存在すること自体を知らない</strong>まま中3になっている人が、じつは少なくないのです。</p>
+
+<div class="callout"><div class="callout-title">💡 判定フローチャート</div>
+英文をつくるとき、まず最初にやるべきことはこれです。<br><br>
+<strong>①動詞は be動詞か、一般動詞か？</strong><br>
+→ be動詞なら：否定は be + not、疑問は be を前へ<br>
+→ 一般動詞なら：否定は do/does + not + 原形、疑問は Do/Does を前へ + 原形<br><br>
+この判定を最初に行うだけで、文法問題のミスは激減します。
+</div>
+
+<div class="exam-box"><div class="exam-title">📝 入試での落とし穴</div>
+もっとも多い間違いは<strong>2つのルールを混ぜてしまうこと</strong>です。<br><br>
+❌ He <strong>doesn't is</strong> a student.（一般動詞のルールをbe動詞に使っている）<br>
+✅ He <strong>is not</strong> a student.<br><br>
+❌ <strong>Is</strong> he play soccer?（be動詞のルールを一般動詞に使っている）<br>
+✅ <strong>Does</strong> he play soccer?<br><br>
+be動詞の文には do/does は絶対に入りません。一般動詞の文に is/are は絶対に入りません（進行形を除く）。この「絶対に混ぜない」を意識するだけで正答率が上がります。
+</div>
+`},
+
+{id:34,section:'grammar',title:'なぜ三単現で s をつけるのか',desc:'ただのルールではない——英語が「主語の情報」にこだわる理由',tag:'grammar',tagLabel:'文法',time:9,
+content:`
+<h2>世界一めんどうなルール？</h2>
+<p>「主語が三人称単数で、時制が現在のとき、動詞に s をつける」。いわゆる三単現の s です。play → plays、like → likes、study → studies。英語学習者が最初につまずくルールのひとつでしょう。なぜこんなめんどうなルールがあるのでしょうか。</p>
+
+<h2>昔の英語は「全部」変化していた</h2>
+<p>じつは、大昔の英語（古英語）では、動詞は<strong>主語によって6通りに変化していた</strong>のです。I、you、he、we、you（複数）、they のそれぞれに対して異なる語尾がありました。ドイツ語やフランス語では今でもこの変化が残っています。</p>
+<p>英語は時代とともにどんどん簡略化が進み、この6通りの変化はほとんど消えてしまいました。唯一残ったのが<strong>三人称単数の s だけ</strong>。いわば「消え残り」なのです。いつか完全に消えるかもしれませんが、まだ消えていないので、今の入試では正確につけなければなりません。</p>
+
+<h2>三単現 s のつけ方</h2>
+<div class="example-block">
+<strong>基本ルール：</strong>そのまま s をつける<br>
+play → plays / like → likes / eat → eats / run → runs<br><br>
+<strong>s, sh, ch, x, o で終わる動詞：</strong>es をつける<br>
+go → goes / watch → watches / wash → washes / teach → teaches<br><br>
+<strong>子音＋y で終わる動詞：</strong>y を i に変えて es<br>
+study → studies / carry → carries / try → tries<br>
+※ play → plays（母音＋y）はそのまま s でOK<br><br>
+<strong>特殊な変化：</strong><br>
+have → has（唯一の不規則変化）
+</div>
+
+<h2>「三人称単数」とは何か</h2>
+<p>「三人称」とは、「I（一人称）」でも「you（二人称）」でもない、<strong>それ以外の全員・全部</strong>のことです。he、she、it はもちろん、Tom、my mother、the dog、this book——すべて三人称です。「単数」は「1人・1つ」。つまり「三人称単数」とは、<strong>「IとYou以外の、たった1人・1つのもの」</strong>のことです。</p>
+<p>ここで間違えやすいのが<strong>everyone / everybody</strong>。「みんな」という意味ですが、文法上は単数扱いです。"Everyone <strong>likes</strong> this song."（みんなこの歌が好き）。また、<strong>主語が長いとき</strong>も注意が必要です。"The boy <strong>who lives</strong> near the park <strong>plays</strong> soccer every day." 主語は The boy（三人称単数）なので、plays に s がつきます。who lives の lives にも s がついている点にも注目してください。</p>
+
+<div class="exam-box"><div class="exam-title">📝 三単現チェックの手順</div>
+英作文を書いたあと、次の3つを確認してください。<br><br>
+<strong>①主語は I でも you でもないか？</strong> → Yes なら三人称<br>
+<strong>②主語は「1人」か「1つ」か？</strong> → Yes なら単数<br>
+<strong>③時制は現在か？</strong>（yesterday や last week がないか） → Yes なら現在<br><br>
+3つとも Yes なら、動詞に s が必要です。逆に、過去形（played）や助動詞のうしろ（can play）では s は不要。<strong>s がつくのは「現在形の肯定文」だけ</strong>です。
+</div>
+`},
+
+{id:35,section:'grammar',title:'英語は「繰り返し」が大キライ',desc:'代名詞の本質を理解すると、長文の「指示語問題」が得意になる',tag:'grammar',tagLabel:'文法',time:9,
+content:`
+<h2>なぜ英語は同じ言葉を繰り返さないのか</h2>
+<p>日本語では「田中さんは先生です。田中さんは数学を教えています。田中さんは沖縄に住んでいます」と、何度も「田中さん」を繰り返しても不自然ではありません。しかし英語で "Mr. Tanaka is a teacher. Mr. Tanaka teaches math. Mr. Tanaka lives in Okinawa." と書くと、非常にぎこちない文章になります。</p>
+<p>英語では、一度登場した名詞を<strong>2回目以降は代名詞（he, she, it, they, them など）で置き換える</strong>のが自然です。"Mr. Tanaka is a teacher. <strong>He</strong> teaches math. <strong>He</strong> lives in Okinawa." これが英語として自然な文章です。</p>
+
+<h2>代名詞は「指示語問題」の宝庫</h2>
+<p>入試で「下線部 he/it/they が指すものを答えなさい」という問題が頻出するのは、英語のこの性質を利用しているからです。代名詞は必ず<strong>前に出てきた名詞を指している</strong>ので、答えは必ず前にあります。</p>
+
+<div class="callout"><div class="callout-title">💡 代名詞の対応表</div>
+<strong>he</strong> → 前に出てきた「男性1人」<br>
+<strong>she</strong> → 前に出てきた「女性1人」<br>
+<strong>it</strong> → 前に出てきた「もの・動物・抽象的な内容」<br>
+<strong>they / them</strong> → 前に出てきた「複数の人やもの」<br>
+<strong>we</strong> → 話し手を含むグループ<br>
+<strong>this / that</strong> → 前の文や段落の内容全体を指すことがある<br>
+<strong>one</strong> → 前に出てきた名詞の繰り返しを避けるための代用語
+</div>
+
+<h2>it が「文の内容全体」を指すケース</h2>
+<p>もっともやっかいなのは、it が具体的な名詞ではなく<strong>前の文全体の内容</strong>を指しているケースです。</p>
+<div class="example-block">
+<span class="en">"She passed the exam. <strong>It</strong> made her very happy."</span><br>
+<span class="ja">→ it = 「彼女が試験に合格したこと」（前の文全体）</span>
+</div>
+<p>この場合、it は exam（試験）を指しているのではなく、「試験に合格した」という出来事全体を指しています。入試ではこのパターンがよく出題されます。it の指す内容を答えるとき、「〜すること」「〜ということ」のように文全体をまとめる意識が必要です。</p>
+
+<h2>this / that が段落をまたぐケース</h2>
+<p>"Many students use smartphones to study. <strong>This</strong> shows that technology can help education." この this は前の文の内容全体——「多くの生徒がスマートフォンで勉強している」という事実——を指しています。</p>
+<p>長文読解では、段落の冒頭に this や these が出てきたら、<strong>前の段落の結論を受けている</strong>可能性が高いです。段落のつながりを読み取るヒントになります。</p>
+
+<div class="exam-box"><div class="exam-title">📝 指示語問題の解き方まとめ</div>
+① 下線部の代名詞を確認する（he? it? this?）<br>
+② <strong>必ず前（上）を見る</strong>。答えは100%下線部より前にある<br>
+③ 代名詞が「単数か複数か」「人か物か」を確認し、一致する名詞を探す<br>
+④ it / this が文全体を指している可能性も常に考える<br>
+⑤ 見つけた答えを代名詞の位置に入れて、文の意味が通るか確認する
+</div>
+`},
+
+{id:36,section:'grammar',title:'「原形」って何？ ― 動詞の「すっぴん」',desc:'助動詞のうしろ、toのうしろ、Doのうしろ——なぜ全部「原形」なのか',tag:'grammar',tagLabel:'文法',time:9,
+content:`
+<h2>英語の動詞には「衣装」がある</h2>
+<p>play という動詞を見てみましょう。plays、played、playing、to play。これだけの「姿」に変身できます。plays は「三単現の衣装」、played は「過去の衣装」、playing は「進行形の衣装」。では、もとの play は何でしょうか。何も飾りがついていない、<strong>動詞のすっぴんの姿——これが「原形」です</strong>。</p>
+
+<h2>原形が登場する5つの場面</h2>
+<p>原形は「ヘルパーがそばにいるとき」に登場します。ヘルパーが仕事を引き受けてくれるので、動詞自身は衣装をつけなくていい——そういうイメージです。</p>
+
+<div class="example-block">
+<strong>① 助動詞のうしろ</strong><br>
+<span class="en">I can <strong>play</strong> soccer.</span>（can が「能力」の仕事をしている → play は原形）<br>
+<span class="en">You must <strong>study</strong> hard.</span>（must が「義務」の仕事をしている → study は原形）<br><br>
+<strong>② to のうしろ（不定詞）</strong><br>
+<span class="en">I want to <strong>play</strong> soccer.</span>（to が「方向」の仕事をしている → play は原形）<br><br>
+<strong>③ do/does/did のうしろ</strong><br>
+<span class="en">Does he <strong>play</strong> soccer?</span>（does が疑問の仕事をしている → play は原形）<br>
+<span class="en">I didn't <strong>play</strong> soccer.</span>（didn't が否定＋過去の仕事をしている → play は原形）<br><br>
+<strong>④ Let's / let のうしろ</strong><br>
+<span class="en">Let's <strong>go</strong>!</span> / <span class="en">Let me <strong>try</strong>.</span><br><br>
+<strong>⑤ 命令文</strong><br>
+<span class="en"><strong>Open</strong> the door.</span>（主語がないので衣装不要 → 原形のまま）
+</div>
+
+<h2>なぜこれが大事なのか</h2>
+<p>「原形」の概念を理解していないと、以下のような間違いが起きます。</p>
+<div class="example-block">
+❌ He can <strong>plays</strong> soccer.（can のうしろなのに s がついている）<br>
+❌ I want to <strong>playing</strong> soccer.（to のうしろなのに -ing がついている）<br>
+❌ Did he <strong>played</strong> soccer?（did のうしろなのに -ed がついている）<br><br>
+すべて、ヘルパーのうしろなのに衣装をつけてしまった間違いです。<br>
+<strong>ヘルパーがいるときは、動詞はすっぴん（原形）</strong>。これだけ覚えてください。
+</div>
+
+<h2>「原形」を知ると、英語の文法が一本の線でつながる</h2>
+<p>助動詞のうしろは原形。toのうしろは原形。do/doesのうしろは原形。命令文は原形。ここまで別々の章で学んできたルールが、「原形」という概念ひとつで<strong>すべてつながります</strong>。バラバラに覚えていた知識が一本の線でつながる瞬間——これが文法を理解する醍醐味です。</p>
+
+<div class="exam-box"><div class="exam-title">📝 穴埋め・並べ替え問題での威力</div>
+穴埋め問題で動詞の形を問われたとき、<strong>直前に何があるかを確認</strong>してください。<br><br>
+直前が <strong>can / will / must / may / should</strong> → 原形<br>
+直前が <strong>to</strong> → 原形<br>
+直前が <strong>do / does / did（＋not）</strong> → 原形<br>
+直前が <strong>is / am / are / was / were ＋</strong> → -ing（進行形）or 過去分詞（受動態）<br>
+直前が <strong>have / has</strong> → 過去分詞（現在完了形）<br><br>
+<strong>「直前の単語を見る」だけで、正しい動詞の形が決まる</strong>のです。
+</div>
+`},
+
+{id:37,section:'grammar',title:'look は「見る」じゃない？ ― 特殊な動詞たち',desc:'look/sound/taste/feel/become——be動詞のフリをする一般動詞の正体',tag:'grammar',tagLabel:'文法',time:9,
+content:`
+<h2>「彼女は疲れて見える」をどう書きますか？</h2>
+<p>"She looks tiredly." と書いた人、残念ながら不正解です。正解は <strong>"She looks tired."</strong> です。look は「見る」という意味の動詞のはずなのに、なぜうしろに副詞（tiredly）ではなく形容詞（tired）が来るのでしょうか。</p>
+<p>じつは、look にはもうひとつの顔があります。「見る」という意味の look と、「〜に見える」という意味の look。後者の look は、じつは<strong>be動詞と同じ働きをしている</strong>のです。</p>
+
+<h2>be動詞の「フリをする」動詞たち</h2>
+<p>"She <strong>is</strong> tired." で She = tired。be動詞は主語と、その状態をイコールでつなぐ役割を持っています。"She <strong>looks</strong> tired." でも、She = tired（のように見える）。look は be動詞と同じように、主語と状態をつないでいるのです。このような動詞を<strong>リンキング動詞</strong>（連結動詞）と呼びます。</p>
+
+<div class="example-block">
+<strong>【代表的なリンキング動詞】</strong><br><br>
+<span class="en">look</span>（〜に見える）："He <strong>looks</strong> happy."<br>
+<span class="en">sound</span>（〜に聞こえる）："That <strong>sounds</strong> interesting."<br>
+<span class="en">taste</span>（〜な味がする）："This cake <strong>tastes</strong> delicious."<br>
+<span class="en">smell</span>（〜なにおいがする）："The flower <strong>smells</strong> sweet."<br>
+<span class="en">feel</span>（〜と感じる）："I <strong>feel</strong> nervous."<br>
+<span class="en">become</span>（〜になる）："She <strong>became</strong> a teacher."<br>
+<span class="en">get</span>（〜になる）："It <strong>got</strong> dark."<br>
+<span class="en">seem</span>（〜のようだ）："He <strong>seems</strong> busy."
+</div>
+
+<h2>リンキング動詞のうしろは「形容詞」</h2>
+<p>ここが最大のポイントです。ふつうの動詞のうしろには副詞（-lyの形）が来ますが、リンキング動詞のうしろには<strong>形容詞</strong>が来ます。なぜなら、リンキング動詞のうしろの言葉は動詞を修飾しているのではなく、<strong>主語の状態を説明している</strong>からです。</p>
+
+<div class="example-block">
+<strong>ふつうの動詞：</strong>She sings <strong>beautifully</strong>.（副詞 → 歌い方を説明）<br>
+<strong>リンキング動詞：</strong>She looks <strong>beautiful</strong>.（形容詞 → 彼女の状態を説明）<br><br>
+✅ "That sounds <strong>great</strong>."（great は形容詞）<br>
+❌ "That sounds <strong>greatly</strong>."（greatly は副詞 → 間違い）<br><br>
+✅ "The soup tastes <strong>good</strong>."（good は形容詞）<br>
+❌ "The soup tastes <strong>well</strong>."（well は副詞 → 間違い）
+</div>
+
+<h2>"That sounds good." は入試の超頻出表現</h2>
+<p>対話文問題で、提案に対して賛成するときの定番表現が "That sounds good."（それいいですね）です。第29章の対話文パターンでも紹介しましたが、この表現のしくみがわかると記憶に残りやすくなります。"That（それは）sounds（聞こえる＝思える）good（いい）"——提案を「聞いて」、良いと「感じた」という意味です。</p>
+
+<div class="exam-box"><div class="exam-title">📝 入試での判断法</div>
+look / sound / taste / feel / smell / become / get / seem のうしろに来る単語の形を問われたら、<strong>形容詞を選んでください</strong>。-ly がついた副詞を選んではいけません。<br><br>
+見分け方は簡単です。<strong>「主語＝○○」と言い換えられるなら形容詞</strong>。「She looks tired.」は「She = tired」で意味が通る → 形容詞で正解。「She sings beautifully.」は「She = beautifully」では意味が通らない → これは副詞で正解。</div>
+`}
+
+
+];
+</script>
+<script>
+const sections={history:'historyChapters',grammar:'grammarChapters',vocab:'vocabChapters',exam:'examChapters',mind:'mindChapters'};
+function renderChapterList(){
+  Object.values(sections).forEach(id=>document.getElementById(id).innerHTML='');
+  let delay=0;
+  chapters.forEach(ch=>{
+    const c=document.getElementById(sections[ch.section]);if(!c)return;
+    const d=document.createElement('div');d.className='chapter-card';d.dataset.id=ch.id;
+    d.style.animationDelay=delay*0.05+'s';delay++;
+    d.onclick=()=>openChapter(ch.id);
+    d.innerHTML='<div class="chapter-num">'+ch.id+'</div><div class="chapter-info"><div class="chapter-title">'+ch.title+'</div><div class="chapter-desc">'+ch.desc+'</div></div><span class="chapter-tag tag-'+ch.tag+'">'+ch.tagLabel+'</span>';
+    c.appendChild(d);
+  });
+  document.getElementById('totalCount').textContent=chapters.length;
+}
+function filterChapters(){
+  const q=document.getElementById('searchInput').value.toLowerCase();
+  document.querySelectorAll('.chapter-card').forEach(c=>{
+    const ch=chapters.find(x=>x.id==c.dataset.id);if(!ch)return;
+    const m=!q||ch.title.toLowerCase().includes(q)||ch.desc.toLowerCase().includes(q)||ch.tagLabel.includes(q);
+    c.style.display=m?'flex':'none';
+  });
+  Object.keys(sections).forEach(s=>{
+    const list=document.getElementById(sections[s]),label=document.getElementById('label-'+s);
+    label.style.display=[...list.children].some(c=>c.style.display!=='none')?'block':'none';
+  });
+}
+function openChapter(id){
+  const ch=chapters.find(c=>c.id===id);if(!ch)return;
+  document.getElementById('topPage').style.display='none';
+  document.getElementById('readingPage').style.display='block';
+  document.getElementById('readingTitle').textContent=ch.title;
+  document.getElementById('readingMeta').textContent=ch.tagLabel+' ・ '+ch.id+' / '+chapters.length;
+  document.getElementById('readingBody').innerHTML=ch.content+renderNav(ch.id);
+  document.getElementById('progressFill').style.width=(ch.id/chapters.length*100)+'%';
+  window.scrollTo(0,0);
+}
+function renderNav(id){
+  const p=chapters.find(c=>c.id===id-1),n=chapters.find(c=>c.id===id+1);
+  let h='<div class="chapter-nav">';
+  h+=p?'<button class="nav-btn" onclick="openChapter('+p.id+')">← '+p.title+'</button>':'<button class="nav-btn" disabled>最初の章</button>';
+  h+=n?'<button class="nav-btn" onclick="openChapter('+n.id+')">'+n.title+' →</button>':'<button class="nav-btn" disabled>最後の章</button>';
+  return h+'</div>';
+}
+function goBack(){document.getElementById('readingPage').style.display='none';document.getElementById('topPage').style.display='block';window.scrollTo(0,0);}
+window.addEventListener('scroll',()=>{document.getElementById('scrollTopBtn').style.display=window.scrollY>400?'flex':'none'});
+renderChapterList();
+renderTagFilters();
+
+function renderTagFilters(){
+  const tags=[
+    {key:'all',label:'すべて'},
+    {key:'history',label:'🌍 歴史'},
+    {key:'culture',label:'🎭 文化'},
+    {key:'grammar',label:'🔧 文法'},
+    {key:'vocab',label:'📚 語彙'},
+    {key:'exam',label:'📝 入試'},
+    {key:'mind',label:'🧠 マインド'}
+  ];
+  const c=document.getElementById('tagFilters');
+  tags.forEach(t=>{
+    const b=document.createElement('button');
+    b.className='tag-filter'+(t.key==='all'?' active':'');
+    b.textContent=t.label;
+    b.dataset.tag=t.key;
+    b.onclick=()=>filterByTag(t.key);
+    c.appendChild(b);
+  });
+}
+function filterByTag(tag){
+  document.querySelectorAll('.tag-filter').forEach(b=>b.classList.toggle('active',b.dataset.tag===tag));
+  document.querySelectorAll('.chapter-card').forEach(c=>{
+    const ch=chapters.find(x=>x.id==c.dataset.id);
+    if(!ch)return;
+    c.style.display=(tag==='all'||ch.tag===tag)?'flex':'none';
+  });
+  Object.keys(sections).forEach(s=>{
+    const list=document.getElementById(sections[s]),label=document.getElementById('label-'+s);
+    const vis=[...list.children].some(c=>c.style.display!=='none');
+    label.style.display=vis?'block':'none';
+  });
+  document.getElementById('searchInput').value='';
+}
+</script>
+</body>
+</html>
